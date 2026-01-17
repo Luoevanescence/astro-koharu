@@ -354,8 +354,8 @@ navigation:
 comment:
   remark42:
     enabled: true
-    host: https://comment.example.com/
-    siteId: your-site-id
+    host: https://remark42.amoorzheyu.com
+    siteId: remark
 
 # =============================================================================
 # Analytics (Umami)
