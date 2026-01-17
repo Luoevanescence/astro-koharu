@@ -1,0 +1,1 @@
+import{d as r}from"./site.a4jwyKQn.js";var e=(a=>(a.Home="/",a.About="/about",a.Categories="/categories",a.Tags="/tags",a.Weekly="/weekly",a.Friends="/friends",a.Post="/post",a.Archives="/archives",a))(e||{});const o=r.navigation??[{name:"Home",path:"/",icon:"fa6-solid:house-chimney"},{name:"About",path:"/about",icon:"fa6-regular:circle-user"}];export{e as R,o as r};

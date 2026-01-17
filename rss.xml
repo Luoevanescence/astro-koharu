@@ -1,0 +1,2445 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="/rss/feed.xsl" type="text/xsl"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>余弦の博客</title><description>WA 的一声就哭了</description><link>https://luoevanescence.github.io</link><item><title>Infographic 信息图指南</title><link>https://luoevanescence.github.io/post/infographic-guide</link><guid isPermaLink="false">infographic-guide</guid><description>详细介绍如何在 Markdown 中使用 @antv/infographic 创建精美的信息图表，包含各种模板的实用示例</description><pubDate>Sat, 03 Jan 2026 12:00:00 GMT</pubDate><content:encoded>&lt;p&gt;本文将详细介绍如何在 Markdown 中使用 &lt;a href=&quot;https://infographic.antv.vision/&quot;&gt;@antv/infographic&lt;/a&gt; 创建各种精美的信息图表。&lt;/p&gt;
+&lt;h2&gt;什么是 Infographic&lt;a href=&quot;#什么是-infographic&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Infographic（信息图）是一种将数据、信息和知识以视觉化方式呈现的图表形式。相比传统的文字描述，信息图能够更直观、更有吸引力地传达信息。&lt;/p&gt;
+&lt;p&gt;在本博客中，你可以直接在 Markdown 代码块中使用 &lt;code&gt;infographic&lt;/code&gt; 标记来创建各种类型的信息图，支持：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;列表展示&lt;/li&gt;
+&lt;li&gt;流程说明&lt;/li&gt;
+&lt;li&gt;数据对比&lt;/li&gt;
+&lt;li&gt;层级结构&lt;/li&gt;
+&lt;li&gt;统计图表&lt;/li&gt;
+&lt;li&gt;象限分析&lt;/li&gt;
+&lt;li&gt;关系展示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;基本语法&lt;a href=&quot;#基本语法&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;在代码块中使用 &lt;code&gt;infographic&lt;/code&gt; 标记，第一行指定模板名称，然后使用类似 YAML 的语法定义数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;```infographic&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;infographic &amp;lt;template-name&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 标题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  desc 描述&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 条目名称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 条目描述&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/icon-name&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;列表类模板 (list-*)&lt;a href=&quot;#列表类模板-list-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示信息列表、特性清单、技术栈等。&lt;/p&gt;
+&lt;h3&gt;网格卡片布局&lt;a href=&quot;#网格卡片布局&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;list-grid-badge-card&lt;/code&gt; 模板展示卡片式列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic list-grid-badge-card&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 前端技术栈&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  desc 现代化前端开发常用技术&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label TypeScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 类型安全的 JavaScript 超集&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/language-typescript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label React&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 用于构建用户界面的 JavaScript 库&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/react&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Astro&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 现代化静态站点生成器&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/rocket-launch&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Tailwind CSS&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 实用优先的 CSS 框架&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/tailwind&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Vite&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 下一代前端构建工具&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/lightning-bolt&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Biome&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 一体化的 Web 工具链&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/cog&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;糖果风格卡片&lt;a href=&quot;#糖果风格卡片&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;list-grid-candy-card-lite&lt;/code&gt; 创建更有趣的卡片样式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic list-grid-candy-card-lite&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 博客特色功能&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 深色模式&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 优雅的主题切换&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/theme-light-dark&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 全站搜索&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 基于 Pagefind 的无后端搜索&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/magnify&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Markdown 增强&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 支持 GFM、Mermaid、Infographic&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/markdown&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 智能推荐&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 基于语义相似度的文章推荐&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/brain&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;水平箭头列表&lt;a href=&quot;#水平箭头列表&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;list-row-horizontal-icon-arrow&lt;/code&gt; 展示线性列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic list-row-horizontal-icon-arrow&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 开发流程&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 需求分析&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/clipboard-text&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 设计方案&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/palette&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 编码实现&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/code-tags&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 测试部署&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/rocket-launch&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;流程/顺序类模板 (sequence-*)&lt;a href=&quot;#流程顺序类模板-sequence-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示步骤、流程、时间线等有顺序关系的信息。&lt;/p&gt;
+&lt;h3&gt;之字形步骤&lt;a href=&quot;#之字形步骤&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;sequence-zigzag-steps-underline-text&lt;/code&gt; 展示流程步骤：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic sequence-zigzag-steps-underline-text&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 博客搭建流程&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 选择框架&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 选择 Astro 作为静态站点生成器&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 设计主题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 参考 Shoka 主题进行设计&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 开发功能&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 实现文章系统、搜索、评论等功能&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 部署上线&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 使用 Vercel 进行自动化部署&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;圆形流程&lt;a href=&quot;#圆形流程&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;sequence-circular-simple&lt;/code&gt; 展示循环流程：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic sequence-circular-simple&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title PDCA 循环&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Plan&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 制定计划&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Do&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 执行实施&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Check&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 检查验证&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Act&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 改进优化&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;垂直路线图&lt;a href=&quot;#垂直路线图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;sequence-roadmap-vertical-simple&lt;/code&gt; 展示时间线或路线图：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic sequence-roadmap-vertical-simple&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 项目里程碑&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 2024 Q1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 项目启动，完成基础架构&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 2024 Q2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 实现核心功能，开始内容迁移&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 2024 Q3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 优化性能，添加高级功能&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 2024 Q4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 正式发布，持续优化&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;金字塔结构&lt;a href=&quot;#金字塔结构&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;sequence-pyramid-simple&lt;/code&gt; 展示层级递进关系：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic sequence-pyramid-simple&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 马斯洛需求层次&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 自我实现&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 尊重需求&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 社交需求&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 安全需求&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 生理需求&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;theme&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  palette&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #8b5cf6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #3b82f6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #06b6d4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #10b981&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #f59e0b&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;对比类模板 (compare-*)&lt;a href=&quot;#对比类模板-compare-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示二元对比、优缺点分析等。&lt;/p&gt;
+&lt;h3&gt;水平二元对比&lt;a href=&quot;#水平二元对比&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;compare-binary-horizontal-simple-fold&lt;/code&gt; 进行对比：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic compare-binary-horizontal-simple-fold&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title SSR vs SSG&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 服务端渲染 (SSR)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 实时生成&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          desc 每次请求时渲染页面&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 动态内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          desc 适合频繁更新的内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 服务器负载&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          desc 需要服务器资源&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 静态生成 (SSG)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 构建时生成&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          desc 提前生成所有页面&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 静态内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          desc 适合内容相对稳定的场景&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label CDN 友好&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          desc 可以部署到 CDN 边缘节点&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;SWOT 分析&lt;a href=&quot;#swot-分析&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;compare-swot&lt;/code&gt; 进行 SWOT 分析：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic compare-swot&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 技术博客 SWOT 分析&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 优势 (Strengths)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 技术积累&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 个人品牌&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 知识沉淀&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 劣势 (Weaknesses)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 时间投入&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 持续更新压力&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 初期流量低&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 机会 (Opportunities)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 技术社区活跃&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 开源生态发展&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 个人成长空间&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 威胁 (Threats)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 内容同质化&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 平台竞争&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 技术快速迭代&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;层级类模板 (hierarchy-*)&lt;a href=&quot;#层级类模板-hierarchy-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示组织结构、分类体系等树形关系。&lt;/p&gt;
+&lt;h3&gt;系统分层结构&lt;a href=&quot;#系统分层结构&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;hierarchy-structure&lt;/code&gt; 展示多层架构，非常适合展示系统架构、模块分层：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic hierarchy-structure&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 系统分层结构&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  desc 展示不同层级的模块与功能分组&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 展现层&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 小程序&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label APP&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label PAD&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 客户端&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label WEB&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 应用层&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 核心模块&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能5&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 基础模块&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能5&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 其他模块&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能5&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 平台层&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 模块1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 模块2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 模块3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能2&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能3&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 功能4&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;科技风格树形图&lt;a href=&quot;#科技风格树形图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;hierarchy-tree-tech-style-capsule-item&lt;/code&gt; 展示层级结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic hierarchy-tree-tech-style-capsule-item&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 前端技术体系&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 前端开发&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 基础技术&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label HTML&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label CSS&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label JavaScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 框架/库&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label React&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label Vue&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label Astro&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 工程化&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label Vite&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label Webpack&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label Rollup&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;圆角矩形树形图&lt;a href=&quot;#圆角矩形树形图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;hierarchy-tree-curved-line-rounded-rect-node&lt;/code&gt; 展示层级：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic hierarchy-tree-curved-line-rounded-rect-node&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 博客内容分类&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 技术文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 前端&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label React&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label TypeScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 后端&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;          children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label Node.js&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;            - label 数据库&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 生活随笔&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      children&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 年度总结&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        - label 读书笔记&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;图表类模板 (chart-*)&lt;a href=&quot;#图表类模板-chart-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示统计数据、数值对比等。&lt;/p&gt;
+&lt;h3&gt;柱状图&lt;a href=&quot;#柱状图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;chart-column-simple&lt;/code&gt; 展示数据对比：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic chart-column-simple&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 月度文章发布统计&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 1月&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 5&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 2月&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 8&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 3月&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 12&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 4月&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 5月&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 10&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 6月&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 15&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;条形图&lt;a href=&quot;#条形图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;chart-bar-plain-text&lt;/code&gt; 展示横向对比：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic chart-bar-plain-text&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 编程语言使用占比&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label TypeScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 45&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label JavaScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 25&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Python&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 15&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Go&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 10&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Others&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 5&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;饼图&lt;a href=&quot;#饼图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;chart-pie-plain-text&lt;/code&gt; 展示占比分布：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic chart-pie-plain-text&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 访问来源分布&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 搜索引擎&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 45&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 社交媒体&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 30&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 直接访问&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 15&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 外部链接&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 10&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;环形图&lt;a href=&quot;#环形图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;chart-pie-donut-pill-badge&lt;/code&gt; 创建环形图：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic chart-pie-donut-pill-badge&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 技术栈占比&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 前端&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 50&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 后端&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 30&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label DevOps&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 20&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;折线图&lt;a href=&quot;#折线图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;chart-line-plain-text&lt;/code&gt; 展示趋势：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic chart-line-plain-text&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 博客访问量趋势&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 第1周&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 100&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 第2周&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 150&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 第3周&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 200&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 第4周&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 280&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 第5周&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 350&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 第6周&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 420&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;象限分析 (quadrant-*)&lt;a href=&quot;#象限分析-quadrant-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示四象限分析、优先级矩阵等。&lt;/p&gt;
+&lt;h3&gt;简单卡片象限&lt;a href=&quot;#简单卡片象限&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;quadrant-quarter-simple-card&lt;/code&gt; 进行象限分析：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic quadrant-quarter-simple-card&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 四象限分析&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 重要且紧急&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 直接规避风险&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      illus notify&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 重要不紧急&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 采取风险控制措施&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      illus coffee&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 不重要但紧急&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 通过保险转移风险&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      illus diary&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 不重要不紧急&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 选择接受风险&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      illus invest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;关系图 (relation-*)&lt;a href=&quot;#关系图-relation-&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;适合展示元素间的关联关系。&lt;/p&gt;
+&lt;h3&gt;圆形图标关系&lt;a href=&quot;#圆形图标关系&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;relation-circle-icon-badge&lt;/code&gt; 展示关系网络：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic relation-circle-circular-progress&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 子公司盈利分析&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  desc 各子公司财务表现，盈利同比增长&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 云计算子公司&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 25&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 年度净利润率达25%，成为集团核心增长引擎&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mingcute/cardano-ada-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 人工智能子公司&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 40&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc AI业务快速扩张，盈利同比增长40%&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mingcute/openai-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 物联网子公司&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 1000&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc IoT设备出货量突破千万，盈利稳步提升&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mingcute/medium-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 金融科技子公司&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 18&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 数字支付业务增长迅猛，净利润率18%&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mingcute/paypal-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 新能源子公司&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      value 50&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 绿色能源项目实现规模化盈利，增长潜力巨大&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mingcute/drone-fill&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;主题定制&lt;a href=&quot;#主题定制&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;可以通过 &lt;code&gt;theme&lt;/code&gt; 块自定义颜色方案：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic list-grid-badge-card&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 自定义配色示例&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 主色调&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 品牌主色&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 辅助色&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 强调色彩&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 中性色&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 背景文字&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;theme&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  palette&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #3b82f6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #8b5cf6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #f97316&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #06b6d4&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #10b981&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;实用技巧&lt;a href=&quot;#实用技巧&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;1. 选择合适的模板&lt;a href=&quot;#1-选择合适的模板&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据要展示的信息类型选择对应的模板：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;列表信息&lt;/strong&gt; → &lt;code&gt;list-*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流程步骤&lt;/strong&gt; → &lt;code&gt;sequence-*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据对比&lt;/strong&gt; → &lt;code&gt;compare-*&lt;/code&gt; 或 &lt;code&gt;chart-*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;层级关系&lt;/strong&gt; → &lt;code&gt;hierarchy-*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优先级分析&lt;/strong&gt; → &lt;code&gt;quadrant-*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关联关系&lt;/strong&gt; → &lt;code&gt;relation-*&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2. 合理使用图标&lt;a href=&quot;#2-合理使用图标&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 &lt;a href=&quot;https://pictogrammers.com/library/mdi/&quot;&gt;Material Design Icons&lt;/a&gt; 让信息图更生动：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;icon mdi/rocket-launch&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;icon mdi/heart&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;icon mdi/lightbulb&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;icon mdi/chart-line&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;3. 控制信息密度&lt;a href=&quot;#3-控制信息密度&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;每个信息图不要包含过多条目（建议 3-8 个）&lt;/li&gt;
+&lt;li&gt;使用简洁的标签和描述&lt;/li&gt;
+&lt;li&gt;复杂信息可以拆分成多个信息图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4. 注意主题适配&lt;a href=&quot;#4-注意主题适配&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;信息图会自动跟随博客的深色/浅色主题切换，无需额外配置。&lt;/p&gt;
+&lt;h2&gt;总结&lt;a href=&quot;#总结&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Infographic 为 Markdown 文档提供了强大的可视化能力，能够让技术博客、文档、笔记更加生动易读。合理使用各种模板，可以显著提升内容的表现力和可读性。&lt;/p&gt;
+&lt;p&gt;更多模板和详细文档，请访问 &lt;a href=&quot;https://infographic.antv.vision/&quot;&gt;Infographic 官方网站&lt;/a&gt;。&lt;/p&gt;</content:encoded><category>category:笔记</category><category>tag:Infographic</category><category>tag:可视化</category><category>tag:Markdown</category></item><item><title>astro-koharu 使用指南</title><link>https://luoevanescence.github.io/post/astro-koharu-guide</link><guid isPermaLink="false">astro-koharu-guide</guid><description>astro-koharu 博客的完整使用指南，包含快速开始、配置说明、文章系统、界面功能等详细介绍</description><pubDate>Mon, 29 Dec 2025 21:55:00 GMT</pubDate><content:encoded>&lt;p&gt;一份完整的 astro-koharu 博客系统使用指南，帮助你快速上手并充分利用所有功能特性。&lt;/p&gt;
+&lt;div&gt;
+  &lt;a href=&quot;https://github.com/cosZone/astro-koharu&quot; target=&quot;_blank&quot;&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;div&gt;
+          &lt;img src=&quot;https://github.com/fluidicon.png&quot; alt=&quot;&quot; loading=&quot;lazy&quot; /&gt;
+          &lt;span&gt;github.com&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;h3&gt;GitHub - cosZone/astro-koharu: astro-koharu 是一个萌系/二次元/粉蓝配色的 astro 主题博客，灵感来自 Hexo 的 Shoka 主题，加了很多自己的小巧思，性能优越。 https://astro.build/themes/details/koharu/&lt;/h3&gt;
+        &lt;p&gt;astro-koharu 是一个萌系/二次元/粉蓝配色的 astro 主题博客，灵感来自 Hexo 的 Shoka 主题，加了很多自己的小巧思，性能优越。 https://astro.build/themes/details/koharu/ - cosZone/astro-koharu&lt;/p&gt;
+        &lt;div&gt;
+          &lt;span&gt;https://github.com/cosZone/astro-koharu&lt;/span&gt;
+           
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/80e69811b020efa35f264bef01902eb13e82afef48ab4e503d973392ca3c87a9/cosZone/astro-koharu&quot; alt=&quot;GitHub - cosZone/astro-koharu: astro-koharu 是一个萌系/二次元/粉蓝配色的 astro 主题博客，灵感来自 Hexo 的 Shoka 主题，加了很多自己的小巧思，性能优越。 https://astro.build/themes/details/koharu/&quot; loading=&quot;lazy&quot; /&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;h2&gt;快速开始&lt;a href=&quot;#快速开始&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;项目简介&lt;a href=&quot;#项目简介&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;astro-koharu 是一个基于 Astro 5.x 构建的现代化博客系统，从 Hexo 迁移而来，设计灵感和初衷都来自 &lt;a href=&quot;https://github.com/amehime/hexo-theme-shoka&quot;&gt;Shoka&lt;/a&gt; 主题。欢迎 &lt;a href=&quot;https://github.com/cosZone/astro-koharu/fork&quot;&gt;fork&lt;/a&gt; 出来制作自己的主题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心特点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于 Astro 5.x，静态站点生成，性能优异&lt;/li&gt;
+&lt;li&gt;优雅的深色/浅色主题切换&lt;/li&gt;
+&lt;li&gt;基于 Pagefind 的无后端全站搜索&lt;/li&gt;
+&lt;li&gt;完整的 Markdown 增强功能（GFM、代码高亮、自动目录）&lt;/li&gt;
+&lt;li&gt;灵活的多级分类与标签系统（从 Shoka 主题迁移，后续会考虑将其改为可关闭的）&lt;/li&gt;
+&lt;li&gt;特色周刊/系列文章支持&lt;/li&gt;
+&lt;li&gt;响应式设计&lt;/li&gt;
+&lt;li&gt;草稿与置顶功能&lt;/li&gt;
+&lt;li&gt;阅读进度条与阅读时间估算&lt;/li&gt;
+&lt;li&gt;移动端文章阅读头部&lt;/li&gt;
+&lt;li&gt;友链系统与归档页面&lt;/li&gt;
+&lt;li&gt;RSS 订阅支持&lt;/li&gt;
+&lt;li&gt;LQIP（低质量图片占位符）&lt;/li&gt;
+&lt;li&gt;圣诞特辑（可开关）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;本地开发&lt;a href=&quot;#本地开发&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 克隆项目&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;git&lt;/span&gt;&lt;span&gt; clone&lt;/span&gt;&lt;span&gt; https://github.com/cosZone/astro-koharu.git&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;cd&lt;/span&gt;&lt;span&gt; astro-koharu&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 安装依赖&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; install&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 启动开发服务器&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; dev&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 构建生产版本&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; build&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 预览生产构建&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; preview&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;快速部署&lt;a href=&quot;#快速部署&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 Vercel 进行一键部署：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://vercel.com/new/clone?repository-url=https://github.com/cosZone/astro-koharu&amp;amp;project-name=astro-koharu&amp;amp;repository-name=astro-koharu&quot;&gt;&lt;img src=&quot;https://vercel.com/button&quot; alt=&quot;Deploy with Vercel&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;基本配置&lt;a href=&quot;#基本配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;站点配置&lt;a href=&quot;#站点配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;编辑 &lt;code&gt;config/site.yaml&lt;/code&gt; 文件配置站点基本信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# =============================================================================&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 站点基础信息&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# =============================================================================&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;site&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;余弦の博客&lt;/span&gt;&lt;span&gt; # 网站标题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  alternate&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;cosine&lt;/span&gt;&lt;span&gt; # 英文短名（用作 logo 文本）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  subtitle&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;WA 的一声就哭了&lt;/span&gt;&lt;span&gt; # 副标题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;cos&lt;/span&gt;&lt;span&gt; # 站点作者简称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;FE / ACG / 手工 / 深色模式强迫症 / INFP&lt;/span&gt;&lt;span&gt; # 站点简介&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  avatar&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/avatar.webp&lt;/span&gt;&lt;span&gt; # 头像路径&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  showLogo&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 是否显示 logo&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  author&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;cos&lt;/span&gt;&lt;span&gt; # 文章作者&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  url&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://blog.cosine.ren/&lt;/span&gt;&lt;span&gt; # 站点域名&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  startYear&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;2020&lt;/span&gt;&lt;span&gt; # 站点创建年份&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  keywords&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;# SEO 关键词&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - &lt;/span&gt;&lt;span&gt;cos&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - &lt;/span&gt;&lt;span&gt;cosine&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - &lt;/span&gt;&lt;span&gt;博客&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - &lt;/span&gt;&lt;span&gt;技术&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - &lt;/span&gt;&lt;span&gt;前端&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;特色分类配置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在首页底部展示的精选分类卡片：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;featuredCategories&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;life&lt;/span&gt;&lt;span&gt; # 分类链接（对应 category_map）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    label&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;随笔&lt;/span&gt;&lt;span&gt; # 显示名称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    image&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/cover/2.webp&lt;/span&gt;&lt;span&gt; # 封面图片&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;生活记录、年度总结等&lt;/span&gt;&lt;span&gt; # 描述&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;note/front-end&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    label&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;前端笔记&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    image&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/cover/1.webp&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;前端相关的笔记&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # ... 更多分类&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;周刊/系列配置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;配置特色系列（如周刊）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;featuredSeries&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  categoryName&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;周刊&lt;/span&gt;&lt;span&gt; # 分类名称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  label&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;FE Bits&lt;/span&gt;&lt;span&gt; # 显示标签&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  fullName&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;FE Bits 前端周周谈&lt;/span&gt;&lt;span&gt; # 完整名称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;|&lt;/span&gt;&lt;span&gt; # 描述（支持多行）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    之前在自己的频道进行一些输出，于是有了这个周刊！&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    更新时间期望是在每周天&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  cover&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/weekly_header.webp&lt;/span&gt;&lt;span&gt; # 封面图&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 是否启用（设为 false 关闭此功能）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  links&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;# 相关链接&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    github&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://github.com/your-username/your-repo&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    rss&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/rss.xml&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;社交媒体配置&lt;a href=&quot;#社交媒体配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中配置社交媒体链接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;social&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  github&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    url&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://github.com/your-username&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:github-fill&lt;/span&gt;&lt;span&gt; # Iconify 图标名&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;#191717&quot;&lt;/span&gt;&lt;span&gt; # 主题色&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  bilibili&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    url&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://space.bilibili.com/your-uid&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:bilibili-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;#da708a&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  email&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    url&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;mailto:your@email.com&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:mail-line&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;#55acd5&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  rss&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    url&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/rss.xml&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:rss-line&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;#ff6600&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # ... 更多平台&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持的平台：GitHub, Twitter, Bilibili, 网易云音乐, Email, RSS 等。完整配置请参考 &lt;code&gt;config/site.yaml&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;h3&gt;导航配置&lt;a href=&quot;#导航配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中自定义导航菜单：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;navigation&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;首页&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;fa6-solid:house-chimney&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;周刊&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/weekly&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:newspaper-line&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:quill-pen-ai-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    children&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;# 支持嵌套子菜单&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;分类&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/categories&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:grid-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;标签&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/tags&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;fa6-solid:tags&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;归档&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/archives&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:archive-2-fill&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;友链&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/friends&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;ri:links-line&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;关于&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    path&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/about&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    icon&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;fa6-regular:circle-user&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;分类映射配置&lt;a href=&quot;#分类映射配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中配置中文分类名到 URL slug 的映射：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# =============================================================================&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# Category Map&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# Maps Chinese category names to URL-friendly English slugs&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# =============================================================================&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;categoryMap&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # Primary categories&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  随笔&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;life&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  笔记&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;note&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  工具&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;tools&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  周刊&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;weekly&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # Secondary categories (for nested paths)&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  前端&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;front-end&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # Add more as needed:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # 后端: back-end&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # 算法: algorithm&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样，“随笔” 分类的 URL 会是 &lt;code&gt;/categories/life&lt;/code&gt;，而不是 &lt;code&gt;/categories/随笔&lt;/code&gt;。&lt;/p&gt;
+&lt;h2&gt;文章系统&lt;a href=&quot;#文章系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;创建文章&lt;a href=&quot;#创建文章&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;src/content/blog/&lt;/code&gt; 目录下创建 Markdown 文件。目录结构会影响文章的分类：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;src/content/blog/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── life/              # 随笔分类&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   └── 2024-life-review.md&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── note/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── front-end/     # 笔记 &amp;gt; 前端&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   └── react/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │       └── React学习小记.md&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   └── algorithm/     # 笔记 &amp;gt; 算法&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│       └── 动态规划学习笔记.md&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;└── tools/             # 工具分类&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    └── vscode插件推荐.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Frontmatter 字段说明&lt;a href=&quot;#frontmatter-字段说明&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;每篇文章开头需要包含 YAML frontmatter：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;必填字段：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;文章标题&lt;/span&gt;&lt;span&gt; # 必填&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;date&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;2024-12-06&lt;/span&gt;&lt;span&gt; # 必填，发布日期&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;常用可选字段：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;文章标题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;date&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;2024-12-06&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;updated&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;2024-12-15&lt;/span&gt;&lt;span&gt; # 最近更新时间（可选，存在时会在文章页显示）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;文章摘要描述&lt;/span&gt;&lt;span&gt; # 用于 SEO 和列表展示，如不填写会自动使用 AI 摘要或提取正文前 150 字&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;custom-url-slug&lt;/span&gt;&lt;span&gt; # 自定义 URL（默认使用文件名）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;cover&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/cover/1.webp&lt;/span&gt;&lt;span&gt; # 封面图片&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;tags&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;# 标签列表&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;JavaScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;React&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;categories&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;# 分类（见下方详细说明）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;笔记&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;subtitle&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;副标题&lt;/span&gt;&lt;span&gt; # 文章副标题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;catalog&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 是否显示目录（默认 true）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;tocNumbering&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 是否显示目录编号（默认 true）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;draft&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;false&lt;/span&gt;&lt;span&gt; # 是否为草稿（默认 false）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;sticky&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;false&lt;/span&gt;&lt;span&gt; # 是否置顶（默认 false）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;关于 description 字段：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文章描述的优先级：手写 &lt;code&gt;description&lt;/code&gt; &amp;gt; AI 自动摘要 &amp;gt; Markdown 正文前 150 字&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建议为重要文章手写描述，以获得更好的 SEO 效果&lt;/li&gt;
+&lt;li&gt;如果省略描述，系统会自动使用 AI 生成的摘要（需运行 &lt;code&gt;pnpm generate:summaries&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;如果既没有手写描述也没有 AI 摘要，则自动提取文章正文的前 150 个字符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;分类系统&lt;a href=&quot;#分类系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;astro-koharu 支持灵活的分类配置：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单层分类：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;categories&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;工具&lt;/span&gt;&lt;span&gt; # 或者 [&apos;工具&apos;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对应 URL: &lt;code&gt;/categories/tools&lt;/code&gt;（根据 &lt;code&gt;categoryMap&lt;/code&gt; 映射）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多层嵌套分类：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;categories&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - [&lt;/span&gt;&lt;span&gt;笔记&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;前端&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;React&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这会创建层级关系：笔记 → 前端 → React&lt;/p&gt;
+&lt;p&gt;对应 URL: &lt;code&gt;/categories/note/front-end/react&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;标签系统&lt;a href=&quot;#标签系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;标签是扁平的，不支持层级：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;tags&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;JavaScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;TypeScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;学习笔记&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有标签会在 &lt;code&gt;/tags&lt;/code&gt; 页面展示，点击标签可查看该标签下的所有文章。&lt;/p&gt;
+&lt;h3&gt;草稿功能&lt;a href=&quot;#草稿功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;设置 &lt;code&gt;draft: true&lt;/code&gt; 将文章标记为草稿：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;未完成的文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;draft&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;行为：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;本地开发&lt;/strong&gt; (&lt;code&gt;pnpm dev&lt;/code&gt;)：草稿可见，文章卡片右上角显示 “DRAFT” 标识&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生产构建&lt;/strong&gt; (&lt;code&gt;pnpm build&lt;/code&gt;)：草稿自动过滤，不会出现在任何列表中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;置顶功能&lt;a href=&quot;#置顶功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;设置 &lt;code&gt;sticky: true&lt;/code&gt; 将文章置顶：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;重要公告&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;sticky&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;行为：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;置顶文章显示在首页 “置顶文章” 区域&lt;/li&gt;
+&lt;li&gt;置顶文章按日期排序（最新的在前）&lt;/li&gt;
+&lt;li&gt;不影响其他页面（分类、标签、归档）的排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;周刊/系列文章&lt;a href=&quot;#周刊系列文章&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果配置了 &lt;code&gt;featuredSeries&lt;/code&gt;（见基本配置），该分类下的文章会：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在首页置顶区域显示最新一篇&lt;/li&gt;
+&lt;li&gt;拥有专属的周刊页面 (&lt;code&gt;/weekly&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;不出现在普通文章列表中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;示例：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;FE Bits Vol.16&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;categories&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;周刊&lt;/span&gt;&lt;span&gt; # 对应 featuredSeries.categoryName&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;界面功能&lt;a href=&quot;#界面功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;主题切换&lt;a href=&quot;#主题切换&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;点击右上角的太阳/月亮图标切换深色/浅色模式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码高亮：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;浅色模式：&lt;code&gt;github-light&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;深色模式：&lt;code&gt;github-dark&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;全站搜索&lt;a href=&quot;#全站搜索&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;基于 &lt;a href=&quot;https://pagefind.app/&quot;&gt;Pagefind&lt;/a&gt; 的静态站点搜索，无需后端服务器。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;打开搜索：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;点击导航栏搜索图标&lt;/li&gt;
+&lt;li&gt;快捷键：&lt;code&gt;Cmd/Ctrl + K&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持中文分词&lt;/li&gt;
+&lt;li&gt;实时搜索结果&lt;/li&gt;
+&lt;li&gt;高亮匹配关键词&lt;/li&gt;
+&lt;li&gt;显示文章摘要和元信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;文章阅读功能&lt;a href=&quot;#文章阅读功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;目录导航 (Table of Contents)：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自动提取文章标题（h2-h6）生成目录&lt;/li&gt;
+&lt;li&gt;使用 CSS 计数器自动为标题添加层级编号（如 1., 1.1., 1.1.1.）&lt;/li&gt;
+&lt;li&gt;支持通过 frontmatter 的 &lt;code&gt;tocNumbering: false&lt;/code&gt; 字段关闭编号显示&lt;/li&gt;
+&lt;li&gt;点击目录项跳转到对应章节&lt;/li&gt;
+&lt;li&gt;滚动时自动高亮当前章节&lt;/li&gt;
+&lt;li&gt;桌面端显示在右侧边栏，移动端折叠&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;目录编号控制：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;我的文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;tocNumbering&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;false&lt;/span&gt;&lt;span&gt; # 关闭目录编号（默认为 true）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;默认情况下，所有文章的目录都会显示层级编号&lt;/li&gt;
+&lt;li&gt;设置 &lt;code&gt;tocNumbering: false&lt;/code&gt; 可以关闭特定文章的编号显示&lt;/li&gt;
+&lt;li&gt;编号通过 CSS 计数器实现，零运行时开销&lt;/li&gt;
+&lt;li&gt;同时适用于桌面端侧边栏和移动端下拉目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;阅读进度条：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面顶部显示阅读进度&lt;/li&gt;
+&lt;li&gt;实时更新当前阅读位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;标题锚点链接：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个标题自动生成 ID&lt;/li&gt;
+&lt;li&gt;悬停标题时显示 &lt;code&gt;#&lt;/code&gt; 链接图标&lt;/li&gt;
+&lt;li&gt;点击可复制带锚点的 URL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;系列文章导航：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文章底部显示同系列的上一篇/下一篇：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于最深层分类自动分组&lt;/li&gt;
+&lt;li&gt;按发布日期排序&lt;/li&gt;
+&lt;li&gt;显示文章标题和封面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;阅读时间估算：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文章卡片显示预计阅读时间（基于字数计算）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;移动端文章阅读头部：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在移动端（≤992px）浏览文章时，顶部导航栏会显示专为阅读优化的头部：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;圆形阅读进度&lt;/strong&gt; - 实时显示当前阅读进度的圆形进度条&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当前章节标题&lt;/strong&gt; - 显示当前所在的 H2/H3 章节标题，切换时带有平滑动画&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可展开目录&lt;/strong&gt; - 点击标题区域可展开完整的文章目录，快速跳转到任意章节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;滚动时自动更新当前章节&lt;/li&gt;
+&lt;li&gt;支持 &lt;code&gt;prefers-reduced-motion&lt;/code&gt; 减少动画&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;响应式设计&lt;a href=&quot;#响应式设计&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;桌面端：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;双栏布局（主内容 + 侧边栏）&lt;/li&gt;
+&lt;li&gt;固定导航栏&lt;/li&gt;
+&lt;li&gt;悬浮目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;平板：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自适应布局调整&lt;/li&gt;
+&lt;li&gt;简化侧边栏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;移动端：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单栏布局&lt;/li&gt;
+&lt;li&gt;抽屉式导航菜单（汉堡菜单）&lt;/li&gt;
+&lt;li&gt;折叠式目录&lt;/li&gt;
+&lt;li&gt;触摸优化的交互&lt;/li&gt;
+&lt;li&gt;文章页专属阅读头部（进度圈 + 当前标题 + 可展开目录）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;特色功能&lt;a href=&quot;#特色功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;周刊系统&lt;a href=&quot;#周刊系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;如果启用了 &lt;code&gt;featuredSeries&lt;/code&gt;，会自动生成周刊相关功能：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;专属周刊页面&lt;/strong&gt; (&lt;code&gt;/weekly&lt;/code&gt;)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;显示所有周刊文章&lt;/li&gt;
+&lt;li&gt;周刊头图和介绍&lt;/li&gt;
+&lt;li&gt;相关链接（GitHub, RSS 等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;首页展示：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最新周刊文章置顶显示&lt;/li&gt;
+&lt;li&gt;独立于普通文章列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;归档页面&lt;a href=&quot;#归档页面&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;访问 &lt;code&gt;/archives&lt;/code&gt; 查看所有文章的归档视图：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按年份分组&lt;/li&gt;
+&lt;li&gt;显示每年的文章数量&lt;/li&gt;
+&lt;li&gt;时间线式展示&lt;/li&gt;
+&lt;li&gt;包含文章发布日期、标题、分类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;友链系统&lt;a href=&quot;#友链系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;访问 &lt;code&gt;/friends&lt;/code&gt; 查看友情链接页面：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;友链卡片展示&lt;/li&gt;
+&lt;li&gt;友链申请表单（可自定义）&lt;/li&gt;
+&lt;li&gt;支持头像、名称、描述、链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;LQIP（低质量图片占位符）&lt;a href=&quot;#lqip低质量图片占位符&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;LQIP（Low Quality Image Placeholder）是一种图片加载优化技术，在高清图片加载完成前，先显示一个低质量的占位符，避免页面出现空白或布局抖动。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; 构建时自动提取图片主色调，生成 CSS 渐变占位符&lt;/li&gt;
+&lt;li&gt;⚡ 零运行时开销 —— 纯 CSS 实现，无需 JavaScript 解码&lt;/li&gt;
+&lt;li&gt; 极小数据体积 —— 每张图片仅需 18 字符存储&lt;/li&gt;
+&lt;li&gt; 外部图片自动降级为纯色占位符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;支持的组件：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文章卡片封面 (&lt;code&gt;PostItemCard&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;页面横幅 (&lt;code&gt;Cover&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;分类卡片背景 (&lt;code&gt;CategoryCards&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;周刊封面 (&lt;code&gt;WeeklyCover&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;侧边栏头像 (&lt;code&gt;HomeInfo&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 生成 LQIP 数据（处理 public/img/ 下所有图片）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; generate:lqips&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;生成效果：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;LQIP 数据保存在 &lt;code&gt;src/assets/lqips.json&lt;/code&gt;，格式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  &quot;cover/1.webp&quot;&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;87a3c4c2dfefbddae9&quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  &quot;cover/2.webp&quot;&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;6e3b38ae7472af7574&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;每个值是 18 个十六进制字符（3 个颜色），运行时解码为 CSS 渐变：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;linear-gradient(135deg, &lt;/span&gt;&lt;span&gt;#87a3c4&lt;/span&gt;&lt;span&gt; 0%, &lt;/span&gt;&lt;span&gt;#c2dfef&lt;/span&gt;&lt;span&gt; 50%, &lt;/span&gt;&lt;span&gt;#bddae9&lt;/span&gt;&lt;span&gt; 100%)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;原理：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 sharp 将图片缩放到 2×2 像素&lt;/li&gt;
+&lt;li&gt;提取四象限的平均色（左上、右上、左下、右下）&lt;/li&gt;
+&lt;li&gt;选取 3 个颜色生成 135 度斜向渐变&lt;/li&gt;
+&lt;li&gt;存储为紧凑的十六进制字符串&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;在组件中使用：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; { getLqipStyle, getLqipProps } &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &apos;@lib/lqip&apos;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 方式 1：直接获取样式字符串&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; style&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; getLqipStyle&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;&apos;/img/cover/1.webp&apos;&lt;/span&gt;&lt;span&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 返回: &quot;background-image:linear-gradient(...)&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 方式 2：获取完整的 props（支持外部图片降级）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; lqipProps&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; getLqipProps&lt;/span&gt;&lt;span&gt;(coverUrl);&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 本地图片返回: { style: &quot;background-image:...&quot; }&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 外部图片返回: { class: &quot;lqip-fallback&quot; }&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;&amp;lt;&lt;/span&gt;&lt;span&gt;div&lt;/span&gt;&lt;span&gt; style&lt;/span&gt;&lt;span&gt;={style}&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  &amp;lt;&lt;/span&gt;&lt;span&gt;img&lt;/span&gt;&lt;span&gt; src&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;&quot;/img/cover/1.webp&quot;&lt;/span&gt;&lt;span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;&amp;lt;/&lt;/span&gt;&lt;span&gt;div&lt;/span&gt;&lt;span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生成的 &lt;code&gt;src/assets/lqips.json&lt;/code&gt; 需要提交到 git&lt;/li&gt;
+&lt;li&gt;添加新图片后需要重新运行 &lt;code&gt;pnpm generate:lqips&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;外部图片（http/https 开头）会自动使用纯色占位符降级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;相关文章推荐&lt;a href=&quot;#相关文章推荐&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;参考 &lt;a href=&quot;https://alexop.dev/posts/semantic-related-posts-astro-transformersjs/&quot;&gt;No Server, No Database: Smarter Related Posts in Astro with &lt;code&gt;transformers.js&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;基于语义相似度的智能文章推荐系统，使用 &lt;a href=&quot;https://huggingface.co/docs/transformers.js&quot;&gt;transformers.js&lt;/a&gt; 在本地生成文章嵌入向量，计算文章间的语义相似度。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; 基于 AI 嵌入模型（Snowflake Arctic Embed）的语义理解&lt;/li&gt;
+&lt;li&gt; 自动计算文章间的相似度，推荐最相关的 5 篇文章&lt;/li&gt;
+&lt;li&gt; 构建时预计算，运行时零开销&lt;/li&gt;
+&lt;li&gt; 支持排除特定文章（如周刊）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 生成相似度数据（本地运行，会自动下载模型，约需 3-5 分钟）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; generate:similarities&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 生成的文件会提交到 git，Vercel 等平台直接使用&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置排除规则：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;src/scripts/generateSimilarities.ts&lt;/code&gt; 中的 &lt;code&gt;EXCLUDE_PATTERNS&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; EXCLUDE_PATTERNS&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; [&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  &quot;weekly-&quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;// 排除周刊文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;];&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置计算内容：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以选择是否将文章正文纳入相似度计算：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;// true: 使用 标题 + 描述 + 正文（更准确，速度较慢）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// false: 仅使用 标题 + 描述（更快，适合文章数量较多的情况）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; INCLUDE_BODY&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; true&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;包含正文&lt;/strong&gt;：相似度更精确，能识别内容层面的相关性，但生成速度较慢&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仅标题+描述&lt;/strong&gt;：生成速度快，适合描述写得比较详细的博客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 使用 Snowflake/snowflake-arctic-embed-m-v2.0 计算 168 篇文章（标题+描述）的时间&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;Done!&lt;/span&gt;&lt;span&gt; Generated&lt;/span&gt;&lt;span&gt; similarities&lt;/span&gt;&lt;span&gt; for&lt;/span&gt;&lt;span&gt; 168&lt;/span&gt;&lt;span&gt; posts&lt;/span&gt;&lt;span&gt; in&lt;/span&gt;&lt;span&gt; 4.1s&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 使用 Snowflake/snowflake-arctic-embed-m-v2.0 计算 168 篇文章（标题+描述+正文）的时间&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;Done!&lt;/span&gt;&lt;span&gt; Generated&lt;/span&gt;&lt;span&gt; similarities&lt;/span&gt;&lt;span&gt; for&lt;/span&gt;&lt;span&gt; 168&lt;/span&gt;&lt;span&gt; posts&lt;/span&gt;&lt;span&gt; in&lt;/span&gt;&lt;span&gt; 219.3s&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这差别有点大，但是我个人很喜欢带正文的结果，效果显然会更好。所以索性再加一个跑 AI 总结的功能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模型选择：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;默认使用 &lt;code&gt;Snowflake/snowflake-arctic-embed-m-v2.0&lt;/code&gt; 模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型大小&lt;/strong&gt;：约 90MB（首次运行会自动下载到 &lt;code&gt;.cache/transformers&lt;/code&gt; 目录）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向量维度&lt;/strong&gt;：768 维&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;：平衡了质量和速度，适合中文和英文内容&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生成时间&lt;/strong&gt;：约 3-5 分钟（169 篇文章）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如需更换模型，编辑 &lt;code&gt;src/scripts/generateSimilarities.ts&lt;/code&gt; 中的 &lt;code&gt;MODEL_NAME&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; MODEL_NAME&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; &quot;Snowflake/snowflake-arctic-embed-m-v2.0&quot;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 可选替代方案：&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// const MODEL_NAME = &apos;sentence-transformers/all-MiniLM-L6-v2&apos;; // 更小更快（约 23MB），384 维&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// const MODEL_NAME = &apos;BAAI/bge-small-zh-v1.5&apos;;  // 针对中文优化&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;其他可选模型对比：&lt;/strong&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;模型&lt;/th&gt;&lt;th&gt;大小&lt;/th&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;优势&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;Snowflake/snowflake-arctic-embed-m-v2.0&lt;/code&gt;&lt;/td&gt;&lt;td&gt;~90MB&lt;/td&gt;&lt;td&gt;768&lt;/td&gt;&lt;td&gt;质量高，中英文均衡&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;sentence-transformers/all-MiniLM-L6-v2&lt;/code&gt;&lt;/td&gt;&lt;td&gt;~23MB&lt;/td&gt;&lt;td&gt;384&lt;/td&gt;&lt;td&gt;轻量快速&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;BAAI/bge-small-zh-v1.5&lt;/code&gt;&lt;/td&gt;&lt;td&gt;~95MB&lt;/td&gt;&lt;td&gt;512&lt;/td&gt;&lt;td&gt;中文专用&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要本地运行生成脚本（Vercel 等平台无法运行模型）&lt;/li&gt;
+&lt;li&gt;生成的 &lt;code&gt;src/assets/similarities.json&lt;/code&gt; 需要提交到 git&lt;/li&gt;
+&lt;li&gt;如果没有生成相似度文件，相关文章模块不会显示&lt;/li&gt;
+&lt;li&gt;模型文件会缓存在 &lt;code&gt;.cache/transformers&lt;/code&gt; 目录（已添加到 &lt;code&gt;.gitignore&lt;/code&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;AI 自动摘要&lt;a href=&quot;#ai-自动摘要&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;基于 &lt;a href=&quot;https://huggingface.co/docs/transformers.js&quot;&gt;transformers.js&lt;/a&gt; 的智能摘要生成系统，使用先进的 AI 模型为文章自动生成高质量摘要。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;与相关文章推荐的关系：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;AI 摘要功能与相关文章推荐功能相辅相成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;相似度计算&lt;/strong&gt;需要读取文章全文，计算成本较高（约 3-5 分钟）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI 摘要&lt;/strong&gt;可以在不读取全文的情况下提供优质描述，同时生成的摘要也能帮助改善相似度计算的效果&lt;/li&gt;
+&lt;li&gt;两者共享相同的模型缓存机制，节省存储空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; 基于先进的文本生成模型（Xenova/LaMini-Flan-T5-783M）&lt;/li&gt;
+&lt;li&gt; 自动为缺少描述的文章生成摘要&lt;/li&gt;
+&lt;li&gt;✨ 文章详情页支持打字机动画展示，增强阅读体验&lt;/li&gt;
+&lt;li&gt; 智能 fallback：优先使用手写 description，无描述时自动使用 AI 摘要&lt;/li&gt;
+&lt;li&gt; 构建时预生成，运行时零开销&lt;/li&gt;
+&lt;li&gt;♿ 支持无障碍访问和 prefers-reduced-motion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 生成 AI 摘要（本地运行，首次会下载模型，约需 5-10 分钟）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; generate:summaries&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 生成的文件要提交到 git，然后可以在 Vercel 等平台直接使用&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;生成效果：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;AI 摘要会保存在 &lt;code&gt;src/assets/summaries.json&lt;/code&gt; 文件中，格式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  &quot;article-slug&quot;&lt;/span&gt;&lt;span&gt;: {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    &quot;title&quot;&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;文章标题&quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    &quot;summary&quot;&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;AI 生成的摘要内容...&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;在哪里使用：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文章详情页&lt;/strong&gt;：面包屑导航下方显示可折叠的 AI 摘要卡片&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;默认收起状态，点击”展开”按钮触发&lt;/li&gt;
+&lt;li&gt;展开后以打字机动画逐字显示摘要内容&lt;/li&gt;
+&lt;li&gt;打字机动画仅播放一次，支持 &lt;code&gt;prefers-reduced-motion&lt;/code&gt; 用户偏好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文章卡片&lt;/strong&gt;：作为描述的 fallback&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优先级：手写 &lt;code&gt;description&lt;/code&gt; &amp;gt; AI 摘要 &amp;gt; Markdown 前 150 字&lt;/li&gt;
+&lt;li&gt;在文章列表、首页、分类页等处自动使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;模型选择：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;默认使用 &lt;code&gt;Xenova/LaMini-Flan-T5-783M&lt;/code&gt; 模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型大小&lt;/strong&gt;：约 300MB（首次运行会自动下载到 &lt;code&gt;.cache/transformers&lt;/code&gt; 目录）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生成质量&lt;/strong&gt;：高质量的中英文摘要生成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生成时间&lt;/strong&gt;：约 5-10 分钟（169 篇文章）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如需更换模型，编辑 &lt;code&gt;src/scripts/generateSummaries.ts&lt;/code&gt; 中的 &lt;code&gt;MODEL_NAME&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; MODEL_NAME&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; &quot;Xenova/LaMini-Flan-T5-783M&quot;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// 可选替代方案：&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// const MODEL_NAME = &apos;Xenova/distilbart-cnn-6-6&apos;; // 更快，英文效果好&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// const MODEL_NAME = &apos;facebook/bart-large-cnn&apos;;   // 质量更高，但速度较慢&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置提示词：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以自定义生成摘要的提示词，编辑 &lt;code&gt;src/scripts/generateSummaries.ts&lt;/code&gt; 中的 &lt;code&gt;PROMPT_TEMPLATE&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; PROMPT_TEMPLATE&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; (&lt;/span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; string&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;content&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; string&lt;/span&gt;&lt;span&gt;) &lt;/span&gt;&lt;span&gt;=&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  `请为以下文章生成一段简洁的摘要（100-150字）：&lt;/span&gt;&lt;span&gt;\n\n&lt;/span&gt;&lt;span&gt;标题：${&lt;/span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;}&lt;/span&gt;&lt;span&gt;\n\n&lt;/span&gt;&lt;span&gt;内容：${&lt;/span&gt;&lt;span&gt;content&lt;/span&gt;&lt;span&gt;}`&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;需要本地运行生成脚本（Vercel 等平台无法运行大模型）&lt;/li&gt;
+&lt;li&gt;生成的 &lt;code&gt;src/assets/summaries.json&lt;/code&gt; 需要提交到 git&lt;/li&gt;
+&lt;li&gt;如果没有生成摘要文件，会自动 fallback 到 Markdown 文本提取&lt;/li&gt;
+&lt;li&gt;模型文件会缓存在 &lt;code&gt;.cache/transformers&lt;/code&gt; 目录（已添加到 &lt;code&gt;.gitignore&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;首次运行需要下载模型，建议在网络良好的环境下进行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;最佳实践：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;与相似度计算配合使用&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 先生成摘要&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; generate:summaries&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 再计算相似度（可以使用摘要代替全文，提升速度）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; generate:similarities&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择性生成摘要&lt;/strong&gt;：为了节省时间，脚本会跳过已有 &lt;code&gt;description&lt;/code&gt; 的文章&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;提交到版本控制&lt;/strong&gt;：将生成的 JSON 文件提交到 git，避免在 CI/CD 环境重复生成&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;圣诞特辑&lt;a href=&quot;#圣诞特辑&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;节日限定的圣诞氛围特效系统，包含多种可独立开关的视觉效果，为博客增添节日气氛。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;雪花飘落 —— Canvas 实现的雪花动画，分前景和背景两层，支持视差效果&lt;/li&gt;
+&lt;li&gt;圣诞配色 —— 红绿金主题色替换默认粉蓝配色，支持深色/浅色模式&lt;/li&gt;
+&lt;li&gt;圣诞帽装饰 —— 侧边栏头像上的圣诞帽&lt;/li&gt;
+&lt;li&gt;圣诞灯串 —— Header 顶部的装饰灯串动画&lt;/li&gt;
+&lt;li&gt;圣诞饰品切换 —— 导航栏的装饰饰品&lt;/li&gt;
+&lt;li&gt;运行时开关 —— 右下角浮动按钮可随时切换特效，设置自动保存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;配置方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;config/site.yaml&lt;/code&gt; 中的 &lt;code&gt;christmas&lt;/code&gt; 配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;christmas&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 总开关&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  features&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    snowfall&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 雪花飘落&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    christmasColorScheme&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 圣诞配色&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    christmasCoverDecoration&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 灯串装饰&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    christmasHat&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 圣诞帽&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    readingTimeSnow&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt; # 阅读时间雪花特效&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  snowfall&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    speed&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;0.5&lt;/span&gt;&lt;span&gt; # 飘落速度（默认 0.5）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    intensity&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;0.7&lt;/span&gt;&lt;span&gt; # 桌面端雪花密度（0-1）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    mobileIntensity&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;0.4&lt;/span&gt;&lt;span&gt; # 移动端雪花密度（0-1）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    maxLayers&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;6&lt;/span&gt;&lt;span&gt; # 最大雪花层数&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    maxIterations&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;8&lt;/span&gt;&lt;span&gt; # 最大迭代次数&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    mobileMaxLayers&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;4&lt;/span&gt;&lt;span&gt; # 移动端最大层数&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    mobileMaxIterations&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;6&lt;/span&gt;&lt;span&gt; # 移动端最大迭代次数&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;用户控制：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面右下角悬浮按钮（雪花图标）可切换圣诞特效开关&lt;/li&gt;
+&lt;li&gt;用户偏好自动保存到 localStorage，跨会话保持&lt;/li&gt;
+&lt;li&gt;支持 &lt;code&gt;prefers-reduced-motion&lt;/code&gt; 偏好，自动禁用动画&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;技术实现：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;雪花使用 Canvas 2D 渲染，分层实现视差效果&lt;/li&gt;
+&lt;li&gt;配色通过 CSS 变量覆盖，零运行时开销&lt;/li&gt;
+&lt;li&gt;状态管理使用 nanostores，支持跨组件同步&lt;/li&gt;
+&lt;li&gt;完全响应式，移动端自动降低雪花密度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;关闭圣诞特效：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设置 &lt;code&gt;christmasConfig.enabled = false&lt;/code&gt; 即可完全关闭所有圣诞特效。&lt;/p&gt;
+&lt;h3&gt;站点公告系统&lt;a href=&quot;#站点公告系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;无后端的站点公告系统，支持在配置文件中管理公告，首次访问自动弹出，关闭后可通过页脚入口再次查看。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无后端 —— 公告内容写在配置文件，无需数据库&lt;/li&gt;
+&lt;li&gt;Toast 通知 —— 右下角浮动通知，支持多条堆叠显示&lt;/li&gt;
+&lt;li&gt;多条公告 —— 支持配置多条公告，按优先级排序&lt;/li&gt;
+&lt;li&gt;时间控制 —— 支持设置公告的开始/结束日期，自动控制显示&lt;/li&gt;
+&lt;li&gt;自定义颜色 —— 每条公告可设置独立颜色，覆盖默认类型颜色&lt;/li&gt;
+&lt;li&gt;时间线弹窗 —— 公告列表采用时间线样式，带渐变连接线&lt;/li&gt;
+&lt;li&gt;Hover 已读 —— 悬停 Toast 1 秒后自动标记已读&lt;/li&gt;
+&lt;li&gt;已读追踪 —— localStorage 记录已读状态，返回访问不重复弹出&lt;/li&gt;
+&lt;li&gt;再次查看 —— 页脚入口可随时查看所有公告，带未读红点提示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;配置方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;config/site.yaml&lt;/code&gt; 添加公告：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;announcements&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;id&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;welcome-2026&lt;/span&gt;&lt;span&gt; # 唯一标识&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;2026 年新年快乐!&lt;/span&gt;&lt;span&gt; # 公告标题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    content&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;新年快乐! 感谢大家一直以来的支持~&lt;/span&gt;&lt;span&gt; # 公告内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    type&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;info&lt;/span&gt;&lt;span&gt; # 类型：info | warning | success | important&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    priority&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;300&lt;/span&gt;&lt;span&gt; # 优先级（越高越先显示）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;#ED788C&quot;&lt;/span&gt;&lt;span&gt; # 自定义颜色（可选，覆盖 type 默认色）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    publishDate&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;2026-01-01&quot;&lt;/span&gt;&lt;span&gt; # 显示日期（可选，用于时间线展示）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    startDate&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;2025-12-31T00:00:00+08:00&quot;&lt;/span&gt;&lt;span&gt; # 开始日期（可选）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    endDate&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;2026-01-15T23:59:59+08:00&quot;&lt;/span&gt;&lt;span&gt; # 结束日期（可选）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;id&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;site-update-01&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;站点更新公告&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    content&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;新增站点公告系统，现在支持多条公告同时显示！&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    type&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;info&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    priority&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;500&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;#6366F1&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    publishDate&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&quot;2025-01-02&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果需要添加链接（可选）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;announcements&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;id&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;example-with-link&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;示例公告&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    content&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;公告内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    type&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;info&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    link&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      url&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://example.com&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      text&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;了解更多&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      external&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;公告类型样式：&lt;/strong&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;类型&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;th&gt;默认颜色&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;info&lt;/code&gt;&lt;/td&gt;&lt;td&gt;信息通知&lt;/td&gt;&lt;td&gt;蓝色 (#3b82f6)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;warning&lt;/code&gt;&lt;/td&gt;&lt;td&gt;警告提示&lt;/td&gt;&lt;td&gt;黄色 (#eab308)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;success&lt;/code&gt;&lt;/td&gt;&lt;td&gt;成功消息&lt;/td&gt;&lt;td&gt;绿色 (#22c55e)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;important&lt;/code&gt;&lt;/td&gt;&lt;td&gt;重要公告&lt;/td&gt;&lt;td&gt;红色 (#ef4444)&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;设置 &lt;code&gt;color&lt;/code&gt; 字段可覆盖上述默认颜色&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;交互流程：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;首次访问&lt;/strong&gt;：0.5 秒后自动弹出未读公告 Toast（多条堆叠显示）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hover 已读&lt;/strong&gt;：悬停在 Toast 上 1 秒后自动标记已读&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;手动关闭&lt;/strong&gt;：点击 Dismiss 关闭 Toast&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;点击”View all”&lt;/strong&gt;：关闭所有 Toast，打开时间线弹窗&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间线弹窗&lt;/strong&gt;：点击公告卡片标记已读，显示发布日期和渐变连接线&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;页脚入口&lt;/strong&gt;：随时可点击查看所有公告，未读时显示红点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回访问&lt;/strong&gt;：只显示真正未读的公告&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;公告 &lt;code&gt;id&lt;/code&gt; 必须唯一，用于追踪已读状态&lt;/li&gt;
+&lt;li&gt;省略 &lt;code&gt;startDate&lt;/code&gt; 表示立即生效，省略 &lt;code&gt;endDate&lt;/code&gt; 表示永不过期&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;publishDate&lt;/code&gt; 用于时间线弹窗中的日期显示，省略时使用 &lt;code&gt;startDate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;过期公告建议从配置中删除，保持配置简洁&lt;/li&gt;
+&lt;li&gt;已读状态存储在 localStorage，key 为 &lt;code&gt;announcement-read-ids&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Markdown 增强&lt;a href=&quot;#markdown-增强&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;语法支持：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub Flavored Markdown (GFM)
+&lt;ul&gt;
+&lt;li&gt;表格&lt;/li&gt;
+&lt;li&gt;任务列表&lt;/li&gt;
+&lt;li&gt;删除线&lt;/li&gt;
+&lt;li&gt;自动链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Mermaid 图表：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;支持在 Markdown 中使用 Mermaid 语法绘制流程图、时序图、架构图等。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;```mermaid&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;flowchart LR&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    A[构建时脚本] --&amp;gt; B[JSON 数据文件] --&amp;gt; C[运行时工具函数]&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;flowchart LR
+    A[构建时脚本] --&amp;gt; B[JSON 数据文件] --&amp;gt; C[运行时工具函数]&lt;/pre&gt;
+&lt;p&gt;支持的图表类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;flowchart&lt;/code&gt; / &lt;code&gt;graph&lt;/code&gt; - 流程图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequenceDiagram&lt;/code&gt; - 时序图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;classDiagram&lt;/code&gt; - 类图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stateDiagram&lt;/code&gt; - 状态图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;erDiagram&lt;/code&gt; - ER 图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gantt&lt;/code&gt; - 甘特图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pie&lt;/code&gt; - 饼图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mindmap&lt;/code&gt; - 思维导图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;图表会自动跟随深色/浅色主题切换。更多语法参考 &lt;a href=&quot;https://mermaid.js.org/&quot;&gt;Mermaid 官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Infographic 信息图：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;支持使用 &lt;a href=&quot;https://infographic.antv.vision/&quot;&gt;@antv/infographic&lt;/a&gt; 在 Markdown 中绘制精美的信息图表，适合展示流程、对比、层级、统计等数据。&lt;/p&gt;
+&lt;p&gt;使用方式：在代码块中使用 &lt;code&gt;infographic&lt;/code&gt; 标记，第一行指定模板名称，然后使用类似 YAML 的语法定义数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;```infographic&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;infographic list-grid-badge-card&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 技术栈&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  desc 我的常用技术栈&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label TypeScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 类型安全的 JavaScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/language-typescript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label React&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 用户界面库&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/react&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Astro&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 现代化静态站点生成器&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/rocket-launch&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;infographic list-grid-badge-card&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title 技术栈&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  desc 我的常用技术栈&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label TypeScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 类型安全的 JavaScript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/language-typescript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label React&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 用户界面库&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/react&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label Astro&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      desc 现代化静态站点生成器&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      icon mdi/rocket-launch&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;可用模板类型：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;列表类&lt;/strong&gt; (&lt;code&gt;list-*&lt;/code&gt;)：展示信息列表&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;list-grid-badge-card&lt;/code&gt; - 卡片网格布局&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;list-grid-candy-card-lite&lt;/code&gt; - 糖果风格卡片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;list-row-horizontal-icon-arrow&lt;/code&gt; - 水平图标箭头列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;流程/顺序类&lt;/strong&gt; (&lt;code&gt;sequence-*&lt;/code&gt;)：展示步骤、流程或阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sequence-zigzag-steps-underline-text&lt;/code&gt; - 之字形步骤&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequence-circular-simple&lt;/code&gt; - 圆形流程&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequence-roadmap-vertical-simple&lt;/code&gt; - 垂直路线图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequence-pyramid-simple&lt;/code&gt; - 金字塔结构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;对比类&lt;/strong&gt; (&lt;code&gt;compare-*&lt;/code&gt;)：二元或多元对比&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;compare-binary-horizontal-simple-fold&lt;/code&gt; - 水平二元对比&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;compare-swot&lt;/code&gt; - SWOT 分析&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;compare-hierarchy-left-right-circle-node-pill-badge&lt;/code&gt; - 层级左右对比&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;层级类&lt;/strong&gt; (&lt;code&gt;hierarchy-*&lt;/code&gt;)：展示树形结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;hierarchy-tree-tech-style-capsule-item&lt;/code&gt; - 科技风格树形图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hierarchy-tree-curved-line-rounded-rect-node&lt;/code&gt; - 曲线连接树形图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;图表类&lt;/strong&gt; (&lt;code&gt;chart-*&lt;/code&gt;)：数据可视化&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chart-column-simple&lt;/code&gt; - 柱状图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chart-bar-plain-text&lt;/code&gt; - 条形图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chart-pie-plain-text&lt;/code&gt; - 饼图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chart-line-plain-text&lt;/code&gt; - 折线图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;其他&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;quadrant-*&lt;/code&gt; - 象限分析图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;relation-*&lt;/code&gt; - 关系图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数据字段说明：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;title&lt;/code&gt; - 标题（可选）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;desc&lt;/code&gt; - 描述文本（可选）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;items&lt;/code&gt; - 条目数组，每个条目可包含：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;label&lt;/code&gt; - 主标签文本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;value&lt;/code&gt; - 数值（用于图表类模板）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;desc&lt;/code&gt; - 描述文本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon&lt;/code&gt; - 图标名称（格式：&lt;code&gt;mdi/icon-name&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;children&lt;/code&gt; - 子条目（用于层级结构）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;主题定制：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以在数据后添加 &lt;code&gt;theme&lt;/code&gt; 块自定义颜色：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;```infographic&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;infographic sequence-pyramid-simple&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;data&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  items&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 基础层&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 中间层&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - label 顶层&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;theme&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  palette&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #3b82f6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #8b5cf6&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    - #f97316&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;信息图会自动跟随深色/浅色主题切换，并使用项目的寒蝉全圆体字体渲染。更多模板和语法参考 &lt;a href=&quot;https://infographic.antv.vision/&quot;&gt;Infographic 官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;代码高亮：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于 Shiki&lt;/li&gt;
+&lt;li&gt;支持双主题（深色/浅色）&lt;/li&gt;
+&lt;li&gt;支持语言标注&lt;/li&gt;
+&lt;li&gt;行号显示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;```javascript&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;function&lt;/span&gt;&lt;span&gt; hello&lt;/span&gt;&lt;span&gt;() {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  console.&lt;/span&gt;&lt;span&gt;log&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;&quot;Hello, world!&quot;&lt;/span&gt;&lt;span&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;function&lt;/span&gt;&lt;span&gt; hello&lt;/span&gt;&lt;span&gt;() {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  console.&lt;/span&gt;&lt;span&gt;log&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;&quot;Hello, world!&quot;&lt;/span&gt;&lt;span&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;标题自动链接：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所有标题自动生成可点击的锚点链接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;链接自动嵌入：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;独行的特殊链接会自动转换为嵌入组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Twitter/X 链接&lt;/strong&gt;：自动嵌入 Tweet 组件&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CodePen 链接&lt;/strong&gt;：自动嵌入交互式 CodePen 演示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;其他链接&lt;/strong&gt;：显示 OG 预览卡片（包含标题、描述、图片等）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;&amp;lt;!-- 独行链接会被嵌入 --&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;https://x.com/vercel_dev/status/1997059920936775706&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;https://codepen.io/botteu/pen/YPKBrJX/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;https://github.com/vercel/react-tweet&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;反爬严格，获取不到元信息的链接&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;https://zhuanlan.zhihu.com/p/1900483903984243480&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;&amp;lt;!-- 段落中的链接保持不变 --&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;这是一个 [&lt;/span&gt;&lt;span&gt;普通链接&lt;/span&gt;&lt;span&gt;](&lt;/span&gt;&lt;span&gt;https://example.com&lt;/span&gt;&lt;span&gt;)，不会被嵌入。&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;span&gt;See the Pen &lt;a href=&quot;https://codepen.io/botteu/pen/YPKBrJX/&quot;&gt;YPKBrJX&lt;/a&gt; by botteu (&lt;a href=&quot;https://codepen.io/botteu&quot;&gt;@botteu&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/span&gt;
+&lt;/p&gt;
+&lt;div&gt;
+  &lt;a href=&quot;https://github.com/vercel/react-tweet&quot; target=&quot;_blank&quot;&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;div&gt;
+          &lt;img src=&quot;https://github.com/fluidicon.png&quot; alt=&quot;&quot; loading=&quot;lazy&quot; /&gt;
+          &lt;span&gt;github.com&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;h3&gt;GitHub - vercel/react-tweet: Embed tweets in your React application.&lt;/h3&gt;
+        &lt;p&gt;Embed tweets in your React application. Contribute to vercel/react-tweet development by creating an account on GitHub.&lt;/p&gt;
+        &lt;div&gt;
+          &lt;span&gt;https://github.com/vercel/react-tweet&lt;/span&gt;
+           
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/ea1acd43ea6d0ec750eeb8eef0f6eda245b183fc44e915772db81ddc1ed15a7f/vercel/react-tweet&quot; alt=&quot;GitHub - vercel/react-tweet: Embed tweets in your React application.&quot; loading=&quot;lazy&quot; /&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;反爬严格，获取不到元信息的链接&lt;/p&gt;
+&lt;div&gt;
+  &lt;a href=&quot;https://zhuanlan.zhihu.com/p/1900483903984243480&quot; target=&quot;_blank&quot;&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;div&gt;
+          
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div&gt;https://zhuanlan.zhihu.com/p/1900483903984243480&lt;/div&gt;
+          &lt;div&gt;zhuanlan.zhihu.com&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这是一个 &lt;a href=&quot;https://example.com&quot;&gt;普通链接&lt;/a&gt;，不会被嵌入。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;其他增强：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自动目录生成&lt;/li&gt;
+&lt;li&gt;阅读时间计算&lt;/li&gt;
+&lt;li&gt;外部链接自动添加 &lt;code&gt;target=&quot;_blank&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;RSS 订阅&lt;a href=&quot;#rss-订阅&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;访问 &lt;code&gt;/rss.xml&lt;/code&gt; 获取 RSS feed。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;包含内容：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最新文章列表&lt;/li&gt;
+&lt;li&gt;文章摘要&lt;/li&gt;
+&lt;li&gt;发布日期&lt;/li&gt;
+&lt;li&gt;文章链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;数据统计&lt;a href=&quot;#数据统计&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;集成 Umami 分析（可选）。&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;analytics&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  umami&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    id&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;your-umami-id&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    endpoint&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://stats.example.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;开发指南&lt;a href=&quot;#开发指南&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;目录结构&lt;a href=&quot;#目录结构&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;astro-koharu/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── src/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── components/      # 组件&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   ├── common/      # 通用组件（错误边界等）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   ├── ui/          # UI 组件（按钮、卡片等）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   ├── layout/      # 布局组件（头部、侧边栏等）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   ├── post/        # 文章相关组件&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   ├── category/    # 分类组件&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   └── theme/       # 主题切换&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── content/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   │   └── blog/        # 博客文章（Markdown）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── layouts/         # 页面布局模板&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── pages/           # 页面路由&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── lib/             # 工具函数&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── hooks/           # React hooks&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── constants/       # 常量配置&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── scripts/         # 构建脚本&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   ├── styles/          # 全局样式&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   └── types/           # TypeScript 类型定义&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── public/              # 静态资源&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   └── img/             # 图片资源&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── config/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   └── site.yaml        # 站点配置（含分类映射）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── astro.config.mjs     # Astro 配置&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── tailwind.config.ts   # Tailwind 配置&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;└── tsconfig.json        # TypeScript 配置&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;路径别名&lt;a href=&quot;#路径别名&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;项目配置了以下路径别名（在 &lt;code&gt;tsconfig.json&lt;/code&gt; 中）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; { something } &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &quot;@/xxx&quot;&lt;/span&gt;&lt;span&gt;; &lt;/span&gt;&lt;span&gt;// → src/xxx&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; Component &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &quot;@components/xxx&quot;&lt;/span&gt;&lt;span&gt;; &lt;/span&gt;&lt;span&gt;// → src/components/xxx&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; { util } &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &quot;@lib/xxx&quot;&lt;/span&gt;&lt;span&gt;; &lt;/span&gt;&lt;span&gt;// → src/lib/xxx&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; config &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &quot;@constants/xxx&quot;&lt;/span&gt;&lt;span&gt;; &lt;/span&gt;&lt;span&gt;// → src/constants/xxx&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// ... 更多别名见 tsconfig.json&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;常用命令&lt;a href=&quot;#常用命令&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 开发&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; dev&lt;/span&gt;&lt;span&gt;              # 启动开发服务器（默认 localhost:4321）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 构建&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; build&lt;/span&gt;&lt;span&gt;            # 构建生产版本&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; preview&lt;/span&gt;&lt;span&gt;          # 预览生产构建&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 代码质量&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; lint&lt;/span&gt;&lt;span&gt;             # 运行 ESLint&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; lint-md&lt;/span&gt;&lt;span&gt;          # 检查 Markdown 文件&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; lint-md:fix&lt;/span&gt;&lt;span&gt;      # 自动修复 Markdown 问题&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; knip&lt;/span&gt;&lt;span&gt;             # 查找未使用的文件和依赖&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# Koharu CLI&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt;                   # 交互式主菜单&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; backup&lt;/span&gt;&lt;span&gt;            # 备份博客内容（--full 完整备份）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; restore&lt;/span&gt;&lt;span&gt;           # 还原备份（--latest, --dry-run）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; update&lt;/span&gt;&lt;span&gt;            # 更新主题（--check, --skip-backup, --force）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt;          # 生成内容资产（交互式选择）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; lqips&lt;/span&gt;&lt;span&gt;    # 生成 LQIP 占位符&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; similarities&lt;/span&gt;&lt;span&gt;  # 生成相似度向量&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; summaries&lt;/span&gt;&lt;span&gt;     # 生成 AI 摘要&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; all&lt;/span&gt;&lt;span&gt;      # 生成全部资产&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; clean&lt;/span&gt;&lt;span&gt;             # 清理旧备份（--keep N）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; list&lt;/span&gt;&lt;span&gt;              # 查看所有备份&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 工具&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; change&lt;/span&gt;&lt;span&gt;           # 生成 CHANGELOG.md（基于 git-cliff）&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Docker 部署&lt;a href=&quot;#docker-部署&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;astro-koharu 支持通过 Docker 进行容器化部署，适合需要自托管的场景。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;快速开始：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 1. 编辑 config/site.yaml，配置 comment.remark42 和 analytics.umami 部分&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 2. 构建并启动&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;docker&lt;/span&gt;&lt;span&gt; compose&lt;/span&gt;&lt;span&gt; -f&lt;/span&gt;&lt;span&gt; docker/docker-compose.yml&lt;/span&gt;&lt;span&gt; up&lt;/span&gt;&lt;span&gt; -d&lt;/span&gt;&lt;span&gt; --build&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 3. 访问&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;open&lt;/span&gt;&lt;span&gt; http://localhost:4321&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;目录结构：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;docker/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── Dockerfile           # 多阶段构建配置&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── docker-compose.yml   # 编排配置&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;├── nginx/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;│   └── default.conf     # Nginx 静态服务配置&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;└── rebuild.sh           # 便捷重建脚本&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;关于生成脚本：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以下脚本&lt;strong&gt;需要在本地运行&lt;/strong&gt;，不能在 Docker 构建时执行：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;脚本&lt;/th&gt;&lt;th&gt;原因&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;pnpm generate:lqips&lt;/code&gt;&lt;/td&gt;&lt;td&gt;使用 &lt;code&gt;sharp&lt;/code&gt; 原生模块处理图片&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;pnpm generate:similarities&lt;/code&gt;&lt;/td&gt;&lt;td&gt;需下载 500MB+ 的 ML 模型&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;pnpm generate:summaries&lt;/code&gt;&lt;/td&gt;&lt;td&gt;需连接本地 LLM 服务器&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;推荐工作流：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 本地开发：添加新图片或文章后&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; generate:all&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 提交生成的数据文件&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;git&lt;/span&gt;&lt;span&gt; add&lt;/span&gt;&lt;span&gt; src/assets/&lt;/span&gt;&lt;span&gt;*&lt;/span&gt;&lt;span&gt;.json&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;git&lt;/span&gt;&lt;span&gt; commit&lt;/span&gt;&lt;span&gt; -m&lt;/span&gt;&lt;span&gt; &quot;chore: update generated assets&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 重建 Docker 容器&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;./docker/rebuild.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;使用 rebuild.sh：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;cd&lt;/span&gt;&lt;span&gt; docker&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;./rebuild.sh&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该脚本会：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;检查环境变量文件&lt;/li&gt;
+&lt;li&gt;停止现有容器&lt;/li&gt;
+&lt;li&gt;重新构建并启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;评论与统计配置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中配置评论系统和统计：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 评论系统（可选）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;comment&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  remark42&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    host&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://your-remark-server.com/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    siteId&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;your-site-id&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 统计系统（可选）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;analytics&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  umami&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    id&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;your-umami-id&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    endpoint&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://your-umami-server.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Docker 端口可在 &lt;code&gt;.env&lt;/code&gt; 中配置 &lt;code&gt;BLOG_PORT=4321&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;生成的 JSON 文件必须提交到 git，Docker 构建时会直接使用&lt;/li&gt;
+&lt;li&gt;如果忘记运行生成脚本，相关功能（LQIP 占位符、相关文章推荐等）将不可用&lt;/li&gt;
+&lt;li&gt;Docker 镜像基于 nginx:alpine，仅包含静态文件，无需 Node.js 运行时&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Koharu CLI&lt;a href=&quot;#koharu-cli&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;博客自带交互式命令行工具，提供备份还原、主题更新、内容生成等功能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;启动方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt;              # 交互式主菜单&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;备份与还原&lt;a href=&quot;#备份与还原&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;更新主题前，建议先备份你的个人内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 基础备份（博客文章、配置、头像、.env）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; backup&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 完整备份（包含所有图片和生成的资产）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; backup&lt;/span&gt;&lt;span&gt; --full&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 查看所有备份&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; list&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 还原最新备份&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; restore&lt;/span&gt;&lt;span&gt; --latest&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 预览将要还原的文件（不实际还原）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; restore&lt;/span&gt;&lt;span&gt; --dry-run&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 强制还原（覆盖已存在的文件）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; restore&lt;/span&gt;&lt;span&gt; --force&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 清理旧备份（保留最近 5 个）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; clean&lt;/span&gt;&lt;span&gt; --keep&lt;/span&gt;&lt;span&gt; 5&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;备份文件存储在 &lt;code&gt;backups/&lt;/code&gt; 目录，格式为 &lt;code&gt;backup-YYYY-MM-DD-HHMMSS.tar.gz&lt;/code&gt;。&lt;/p&gt;
+&lt;h4&gt;更新主题&lt;a href=&quot;#更新主题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;使用 CLI 自动更新主题，完成备份 → 拉取 → 合并 → 安装依赖的完整流程：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 完整更新流程（默认会先备份）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; update&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 仅检查是否有更新&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; update&lt;/span&gt;&lt;span&gt; --check&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 跳过备份直接更新&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; update&lt;/span&gt;&lt;span&gt; --skip-backup&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 强制模式（跳过工作区检查和确认）&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; update&lt;/span&gt;&lt;span&gt; --force&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;更新流程说明：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;检查 Git 状态&lt;/strong&gt; - 确保工作区干净（无未提交的更改）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;备份当前内容&lt;/strong&gt; - 可选，但强烈建议&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置 upstream&lt;/strong&gt; - 自动添加 &lt;code&gt;upstream&lt;/code&gt; remote（如果不存在）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;获取最新代码&lt;/strong&gt; - &lt;code&gt;git fetch upstream&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;显示更新预览&lt;/strong&gt; - 列出新增的提交&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行合并&lt;/strong&gt; - &lt;code&gt;git merge upstream/main&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安装依赖&lt;/strong&gt; - &lt;code&gt;pnpm install&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;处理合并冲突：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果更新时遇到合并冲突，CLI 会显示冲突文件列表。你可以：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择”中止合并”恢复到更新前状态&lt;/li&gt;
+&lt;li&gt;手动解决冲突后运行 &lt;code&gt;git add . &amp;amp;&amp;amp; git commit&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 如果选择手动解决冲突&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;git&lt;/span&gt;&lt;span&gt; status&lt;/span&gt;&lt;span&gt;                    # 查看冲突文件&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 编辑冲突文件，保留需要的内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;git&lt;/span&gt;&lt;span&gt; add&lt;/span&gt;&lt;span&gt; .&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;git&lt;/span&gt;&lt;span&gt; commit&lt;/span&gt;&lt;span&gt; -m&lt;/span&gt;&lt;span&gt; &quot;merge: resolve conflicts&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;更新时使用的 Git 命令：&lt;/strong&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;操作&lt;/th&gt;&lt;th&gt;命令&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;检查工作区状态&lt;/td&gt;&lt;td&gt;&lt;code&gt;git status --porcelain&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;获取当前分支&lt;/td&gt;&lt;td&gt;&lt;code&gt;git rev-parse --abbrev-ref HEAD&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;检查 upstream&lt;/td&gt;&lt;td&gt;&lt;code&gt;git remote -v&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;添加 upstream&lt;/td&gt;&lt;td&gt;&lt;code&gt;git remote add upstream https://github.com/cosZone/astro-koharu.git&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;获取更新&lt;/td&gt;&lt;td&gt;&lt;code&gt;git fetch upstream&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;查看新提交数量&lt;/td&gt;&lt;td&gt;&lt;code&gt;git rev-list --left-right --count HEAD...upstream/main&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;查看新提交列表&lt;/td&gt;&lt;td&gt;`git log HEAD..upstream/main —pretty=format:“%h&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;合并更新&lt;/td&gt;&lt;td&gt;&lt;code&gt;git merge upstream/main --no-edit&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;中止合并&lt;/td&gt;&lt;td&gt;&lt;code&gt;git merge --abort&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h4&gt;内容生成&lt;a href=&quot;#内容生成&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;生成各种内容资产：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;# 交互式选择生成类型&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# 或直接指定类型&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; lqips&lt;/span&gt;&lt;span&gt;        # 生成 LQIP 图片占位符&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; similarities&lt;/span&gt;&lt;span&gt; # 生成语义相似度向量&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; summaries&lt;/span&gt;&lt;span&gt;    # 生成 AI 摘要&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; koharu&lt;/span&gt;&lt;span&gt; generate&lt;/span&gt;&lt;span&gt; all&lt;/span&gt;&lt;span&gt;          # 生成全部&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;如何添加新页面&lt;a href=&quot;#如何添加新页面&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;src/pages/&lt;/code&gt; 目录创建 &lt;code&gt;.astro&lt;/code&gt; 文件&lt;/li&gt;
+&lt;li&gt;Astro 使用文件系统路由，文件路径即 URL 路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;src/pages/about.astro       → /about&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;src/pages/tags/[tag].astro  → /tags/:tag（动态路由）&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;如何自定义样式&lt;a href=&quot;#如何自定义样式&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;全局样式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;src/styles/index.css&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;组件样式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用 Tailwind CSS 工具类或 Astro 的 &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; 标签。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tailwind 配置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;编辑 &lt;code&gt;tailwind.config.ts&lt;/code&gt; 自定义主题、颜色、字体等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;主题变量：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;src/styles/index.css&lt;/code&gt; 中定义的 CSS 变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;:root&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  --primary-color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;#ff6b6b&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  /* ... 更多变量 */&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;动画系统&lt;a href=&quot;#动画系统&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;使用 CSS 动画以及 &lt;a href=&quot;https://motion.dev/&quot;&gt;Motion&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动画配置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;src/constants/anim/&lt;/code&gt; 目录中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;spring.ts&lt;/code&gt; - 弹簧动画配置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;variants.ts&lt;/code&gt; - 动画变体定义&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;props.ts&lt;/code&gt; - 可复用的动画属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;使用示例：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; { motion } &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &quot;motion/react&quot;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;import&lt;/span&gt;&lt;span&gt; { fadeIn } &lt;/span&gt;&lt;span&gt;from&lt;/span&gt;&lt;span&gt; &quot;@constants/anim/variants&quot;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;&amp;lt;&lt;/span&gt;&lt;span&gt;motion.div&lt;/span&gt;&lt;span&gt; variants&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;{fadeIn} &lt;/span&gt;&lt;span&gt;initial&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;&quot;hidden&quot;&lt;/span&gt;&lt;span&gt; animate&lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt;&quot;visible&quot;&lt;/span&gt;&lt;span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  内容&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;&amp;lt;/&lt;/span&gt;&lt;span&gt;motion.div&lt;/span&gt;&lt;span&gt;&amp;gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;与 Hexo/Shoka 主题的对比&lt;a href=&quot;#与-hexoshoka-主题的对比&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;保留的特性&lt;a href=&quot;#保留的特性&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ 分类和标签系统&lt;/li&gt;
+&lt;li&gt;✅ 文章置顶功能&lt;/li&gt;
+&lt;li&gt;✅ 深色/浅色主题切换&lt;/li&gt;
+&lt;li&gt;✅ 响应式设计&lt;/li&gt;
+&lt;li&gt;✅ 友链页面&lt;/li&gt;
+&lt;li&gt;✅ 归档页面&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;改进之处&lt;a href=&quot;#改进之处&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;性能：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;⚡ 静态站点生成 (SSG)，加载速度更快&lt;/li&gt;
+&lt;li&gt;⚡ 按需加载 JavaScript&lt;/li&gt;
+&lt;li&gt;⚡ 图片优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;开发体验：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;️ TypeScript 类型安全&lt;/li&gt;
+&lt;li&gt;️ 热模块替换 (HMR)&lt;/li&gt;
+&lt;li&gt;️ 现代化的开发工具链&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;功能增强：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; 更强大的全站搜索（Pagefind）&lt;/li&gt;
+&lt;li&gt; 内容集合 (Content Collections) 类型安全&lt;/li&gt;
+&lt;li&gt; Tailwind CSS 4.x 样式系统&lt;/li&gt;
+&lt;li&gt; View Transitions API 页面过渡&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;技术栈差异&lt;a href=&quot;#技术栈差异&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;方面&lt;/th&gt;&lt;th&gt;Hexo + Shoka&lt;/th&gt;&lt;th&gt;astro-koharu&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;框架&lt;/td&gt;&lt;td&gt;Hexo (Node.js)&lt;/td&gt;&lt;td&gt;Astro 5.x&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;模板引擎&lt;/td&gt;&lt;td&gt;EJS/Pug&lt;/td&gt;&lt;td&gt;Astro + React&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;样式&lt;/td&gt;&lt;td&gt;Stylus&lt;/td&gt;&lt;td&gt;Tailwind CSS 4.x&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;构建工具&lt;/td&gt;&lt;td&gt;Webpack&lt;/td&gt;&lt;td&gt;Vite&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;类型检查&lt;/td&gt;&lt;td&gt;无&lt;/td&gt;&lt;td&gt;TypeScript&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;内容管理&lt;/td&gt;&lt;td&gt;文件系统&lt;/td&gt;&lt;td&gt;Content Collections&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2&gt;常见问题&lt;a href=&quot;#常见问题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;如何修改封面图片？&lt;a href=&quot;#如何修改封面图片&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在文章 frontmatter 中设置 &lt;code&gt;cover&lt;/code&gt; 字段：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;cover&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/cover/1.webp&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;图片放在 &lt;code&gt;public/img/&lt;/code&gt; 目录。如果不设置，会使用默认封面。&lt;/p&gt;
+&lt;h3&gt;如何自定义域名？&lt;a href=&quot;#如何自定义域名&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;部署到 Vercel 后，在 Vercel 项目设置中添加自定义域名，然后更新 &lt;code&gt;config/site.yaml&lt;/code&gt; 中的 &lt;code&gt;site.url&lt;/code&gt; 字段。&lt;/p&gt;
+&lt;h3&gt;如何添加评论功能？&lt;a href=&quot;#如何添加评论功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;项目已集成 Remark42 评论系统，在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;comment&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  remark42&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    host&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;https://your-remark-server.com/&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    siteId&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;your-site-id&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如需使用其他评论系统（如 Giscus、Waline），可以修改 &lt;code&gt;src/components/common/Remark.astro&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;草稿文章如何预览？&lt;a href=&quot;#草稿文章如何预览&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;运行 &lt;code&gt;pnpm dev&lt;/code&gt; 本地开发模式，草稿会自动显示（带 DRAFT 标识）。&lt;/p&gt;
+&lt;h3&gt;如何关闭某些功能？&lt;a href=&quot;#如何关闭某些功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;关闭周刊&lt;/strong&gt;：设置 &lt;code&gt;featuredSeries.enabled = false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关闭搜索&lt;/strong&gt;：移除 &lt;code&gt;astro.config.mjs&lt;/code&gt; 中的 &lt;code&gt;pagefind()&lt;/code&gt; 集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关闭统计&lt;/strong&gt;：设置 &lt;code&gt;analytics.umami.enabled = false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关闭评论&lt;/strong&gt;：设置 &lt;code&gt;comment.remark42.enabled = false&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;如何更改文章 URL 格式？&lt;a href=&quot;#如何更改文章-url-格式&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;默认使用文件名作为 URL。可以通过 &lt;code&gt;link&lt;/code&gt; 字段自定义：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;link&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;my-custom-url&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;参考资源&lt;a href=&quot;#参考资源&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro 官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tailwindcss.com/docs&quot;&gt;Tailwind CSS 文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://motion.dev/docs&quot;&gt;Motion 文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pagefind.app/&quot;&gt;Pagefind 文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://shoka.lostyu.me/computer-science/note/theme-shoka-doc/&quot;&gt;Shoka 主题文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新日志&lt;a href=&quot;#更新日志&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;查看 &lt;a href=&quot;https://github.com/cosZone/astro-koharu/blob/main/CHANGELOG.md&quot;&gt;CHANGELOG.md&lt;/a&gt; 了解版本更新历史。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;如有问题或建议，欢迎在 &lt;a href=&quot;https://github.com/cosZone/astro-koharu/issues&quot;&gt;GitHub Issues&lt;/a&gt; 中反馈。&lt;/p&gt;</content:encoded><category>category:工具</category><category>tag:Astro</category><category>tag:博客</category><category>tag:教程</category></item><item><title>关闭目录编号示例</title><link>https://luoevanescence.github.io/post/toc-no-numbering</link><guid isPermaLink="false">toc-no-numbering</guid><description>展示如何关闭文章目录的自动编号功能。</description><pubDate>Sun, 07 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;本文展示如何关闭目录的自动编号功能。&lt;/p&gt;
+&lt;h2&gt;目录编号功能&lt;a href=&quot;#目录编号功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;默认情况下，astro-koharu 会使用 CSS 计数器为目录自动添加层级编号，如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;第一章&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;1.1. 第一节&lt;/li&gt;
+&lt;li&gt;1.2. 第二节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;第二章&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;关闭编号&lt;a href=&quot;#关闭编号&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;通过设置 &lt;code&gt;tocNumbering: false&lt;/code&gt; 可以关闭特定文章的编号：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;我的文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;tocNumbering&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;false&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;效果对比&lt;a href=&quot;#效果对比&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;开启编号（默认）&lt;a href=&quot;#开启编号默认&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;目录项会显示 1., 1.1., 1.1.1. 这样的编号。&lt;/p&gt;
+&lt;h3&gt;关闭编号&lt;a href=&quot;#关闭编号-1&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;目录项只显示标题文本，没有编号前缀。&lt;/p&gt;
+&lt;h2&gt;本文效果&lt;a href=&quot;#本文效果&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;本文已设置 &lt;code&gt;tocNumbering: false&lt;/code&gt;，你可以查看右侧目录（桌面端）或展开目录（移动端）来查看效果。&lt;/p&gt;
+&lt;h2&gt;技术实现&lt;a href=&quot;#技术实现&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;编号功能通过纯 CSS 计数器实现，零运行时开销：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;.toc-numbering&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  counter-reset&lt;/span&gt;&lt;span&gt;: h2;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;.toc-numbering&lt;/span&gt;&lt;span&gt; h2&lt;/span&gt;&lt;span&gt;::before&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  counter-increment&lt;/span&gt;&lt;span&gt;: h2;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  content&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;counter&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;h2&lt;/span&gt;&lt;span&gt;) &lt;/span&gt;&lt;span&gt;&quot;. &quot;&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;使用建议&lt;a href=&quot;#使用建议&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;以下场景可能需要关闭编号：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;随笔类文章&lt;/li&gt;
+&lt;li&gt;标题本身已有编号&lt;/li&gt;
+&lt;li&gt;内容结构较松散的文章&lt;/li&gt;
+&lt;li&gt;个人偏好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;总结&lt;a href=&quot;#总结&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;目录编号是一个可选功能，根据文章类型灵活使用即可。&lt;/p&gt;</content:encoded><category>category:笔记</category><category>tag:目录</category><category>tag:教程</category></item><item><title>Hello World</title><link>https://luoevanescence.github.io/post/hello-world</link><guid isPermaLink="false">hello-world</guid><description>你好，世界！这是我的第一篇随笔。
+关于这篇文章
+这篇文章故意没有设置 description 字段，用于测试以下功能：
+
+自动描述提取 - 系统会自动从正文提取前 150 字作为描述
+AI 摘要 - 如果运行了 pnpm generate:summaries，会使用 AI 生成的摘要
+
+随笔分类</description><pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;你好，世界！这是我的第一篇随笔。&lt;/p&gt;
+&lt;h2&gt;关于这篇文章&lt;a href=&quot;#关于这篇文章&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这篇文章故意没有设置 &lt;code&gt;description&lt;/code&gt; 字段，用于测试以下功能：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;自动描述提取&lt;/strong&gt; - 系统会自动从正文提取前 150 字作为描述&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI 摘要&lt;/strong&gt; - 如果运行了 &lt;code&gt;pnpm generate:summaries&lt;/code&gt;，会使用 AI 生成的摘要&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;随笔分类&lt;a href=&quot;#随笔分类&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;随笔分类适合记录：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生活感悟&lt;/li&gt;
+&lt;li&gt;年度总结&lt;/li&gt;
+&lt;li&gt;随想随记&lt;/li&gt;
+&lt;li&gt;个人成长&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;写作建议&lt;a href=&quot;#写作建议&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;写博客是一件有趣的事情。这里有一些建议：&lt;/p&gt;
+&lt;h3&gt;保持更新&lt;a href=&quot;#保持更新&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;定期更新能让博客保持活力。哪怕是简短的记录，也比长期沉寂好。&lt;/p&gt;
+&lt;h3&gt;记录真实&lt;a href=&quot;#记录真实&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;真实的记录比完美的文字更有价值。不必追求每篇都是精品。&lt;/p&gt;
+&lt;h3&gt;享受过程&lt;a href=&quot;#享受过程&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;写作本身就是一种思考和整理的过程，享受这个过程吧。&lt;/p&gt;
+&lt;h2&gt;结语&lt;a href=&quot;#结语&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这就是一篇简单的随笔示例。希望你也能在这里记录自己的故事。&lt;/p&gt;
+&lt;p&gt;祝你写作愉快！&lt;/p&gt;</content:encoded><category>category:随笔</category><category>tag:随笔</category><category>tag:生活</category></item><item><title>示例周刊 Vol.1</title><link>https://luoevanescence.github.io/post/weekly-example-1</link><guid isPermaLink="false">weekly-example-1</guid><description>这是一期示例周刊，展示周刊功能的使用方式。周刊适合发布定期更新的系列内容。</description><pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;这是一期示例周刊，展示周刊/系列文章功能的使用方式。&lt;/p&gt;
+&lt;h2&gt;关于周刊功能&lt;a href=&quot;#关于周刊功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;周刊是 astro-koharu 的特色功能之一，适合发布定期更新的系列内容，如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;技术周刊&lt;/li&gt;
+&lt;li&gt;读书笔记系列&lt;/li&gt;
+&lt;li&gt;学习记录&lt;/li&gt;
+&lt;li&gt;项目进度更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;周刊配置&lt;a href=&quot;#周刊配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;在 &lt;code&gt;config/site.yaml&lt;/code&gt; 中配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;featuredSeries&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  categoryName&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;周刊&lt;/span&gt;&lt;span&gt;       # 分类名称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  label&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;我的周刊&lt;/span&gt;&lt;span&gt;          # 显示标签&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  fullName&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;我的技术周刊&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;周刊描述...&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  cover&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;/img/weekly_header.webp&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  enabled&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt;            # 设为 false 可关闭&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;周刊特点&lt;a href=&quot;#周刊特点&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;专属页面&lt;/strong&gt; - 周刊有独立的 &lt;code&gt;/weekly&lt;/code&gt; 页面&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;首页展示&lt;/strong&gt; - 最新一期会在首页置顶展示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;独立列表&lt;/strong&gt; - 周刊不会出现在普通文章列表中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;系列导航&lt;/strong&gt; - 周刊之间有上下篇导航&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;本期内容示例&lt;a href=&quot;#本期内容示例&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;推荐阅读&lt;a href=&quot;#推荐阅读&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://astro.build&quot;&gt;Astro 5.0 新特性介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tailwindcss.com&quot;&gt;Tailwind CSS 4.0 发布&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;工具推荐&lt;a href=&quot;#工具推荐&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;工具&lt;/th&gt;&lt;th&gt;用途&lt;/th&gt;&lt;th&gt;链接&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Biome&lt;/td&gt;&lt;td&gt;代码检查&lt;/td&gt;&lt;td&gt;biome.dev&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Motion&lt;/td&gt;&lt;td&gt;动画库&lt;/td&gt;&lt;td&gt;motion.dev&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h3&gt;本周学习&lt;a href=&quot;#本周学习&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这周学习了以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; Astro 内容集合&lt;/li&gt;
+&lt;li&gt; Tailwind 主题配置&lt;/li&gt;
+&lt;li&gt; Motion 动画进阶&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;下期预告&lt;a href=&quot;#下期预告&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;下期将介绍更多进阶功能，敬请期待！&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;感谢阅读本期周刊！&lt;/p&gt;</content:encoded><category>category:周刊</category><category>tag:周刊</category></item><item><title>主题定制指南</title><link>https://luoevanescence.github.io/post/theme-customization</link><guid isPermaLink="false">theme-customization</guid><description>介绍如何定制 astro-koharu 的外观，包括配色、布局和动画效果。</description><pubDate>Wed, 03 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;本文介绍如何定制 astro-koharu 的外观和样式。&lt;/p&gt;
+&lt;h2&gt;嵌套分类说明&lt;a href=&quot;#嵌套分类说明&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;本文使用了嵌套分类 &lt;code&gt;[笔记, 前端]&lt;/code&gt;，这会创建层级关系：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;URL: &lt;code&gt;/categories/note/front-end&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;面包屑: 笔记 → 前端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 frontmatter 中这样配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;categories&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - [&lt;/span&gt;&lt;span&gt;笔记&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;前端&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;配色定制&lt;a href=&quot;#配色定制&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;CSS 变量&lt;a href=&quot;#css-变量&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;主题颜色通过 CSS 变量定义，位于 &lt;code&gt;src/styles/index.css&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;:root&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  --primary-color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;#ff6b9d&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  --secondary-color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;#7dd3fc&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  /* ...更多变量 */&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;.dark&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  --primary-color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;#f472b6&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  --secondary-color&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;#38bdf8&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Tailwind 配置&lt;a href=&quot;#tailwind-配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;编辑 &lt;code&gt;tailwind.config.ts&lt;/code&gt; 自定义主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;export&lt;/span&gt;&lt;span&gt; default&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  theme: {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    extend: {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      colors: {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        primary: &lt;/span&gt;&lt;span&gt;&apos;var(--primary-color)&apos;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        secondary: &lt;/span&gt;&lt;span&gt;&apos;var(--secondary-color)&apos;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;      },&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    },&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  },&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;布局调整&lt;a href=&quot;#布局调整&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;内容宽度&lt;a href=&quot;#内容宽度&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;src/constants/layout.ts&lt;/code&gt; 中调整布局常量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;export&lt;/span&gt;&lt;span&gt; const&lt;/span&gt;&lt;span&gt; LAYOUT&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  maxWidth: &lt;/span&gt;&lt;span&gt;&apos;1200px&apos;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  sidebarWidth: &lt;/span&gt;&lt;span&gt;&apos;300px&apos;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  contentPadding: &lt;/span&gt;&lt;span&gt;&apos;1.5rem&apos;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;响应式断点&lt;a href=&quot;#响应式断点&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;主题使用 Tailwind 的默认断点：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;断点&lt;/th&gt;&lt;th&gt;宽度&lt;/th&gt;&lt;th&gt;用途&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;sm&lt;/td&gt;&lt;td&gt;640px&lt;/td&gt;&lt;td&gt;小型手机&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;md&lt;/td&gt;&lt;td&gt;768px&lt;/td&gt;&lt;td&gt;平板&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;lg&lt;/td&gt;&lt;td&gt;1024px&lt;/td&gt;&lt;td&gt;桌面&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;xl&lt;/td&gt;&lt;td&gt;1280px&lt;/td&gt;&lt;td&gt;大屏幕&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2&gt;动画效果&lt;a href=&quot;#动画效果&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;Motion 配置&lt;a href=&quot;#motion-配置&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;动画使用 Motion 库，配置位于 &lt;code&gt;src/constants/anim/&lt;/code&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;// spring.ts - 弹簧动画&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;export&lt;/span&gt;&lt;span&gt; const&lt;/span&gt;&lt;span&gt; springConfig&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  stiffness: &lt;/span&gt;&lt;span&gt;100&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  damping: &lt;/span&gt;&lt;span&gt;10&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;};&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;// variants.ts - 动画变体&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;export&lt;/span&gt;&lt;span&gt; const&lt;/span&gt;&lt;span&gt; fadeIn&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  hidden: { opacity: &lt;/span&gt;&lt;span&gt;0&lt;/span&gt;&lt;span&gt; },&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  visible: { opacity: &lt;/span&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt; },&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;禁用动画&lt;a href=&quot;#禁用动画&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;对于偏好减少动画的用户，主题会自动响应 &lt;code&gt;prefers-reduced-motion&lt;/code&gt; 媒体查询。&lt;/p&gt;
+&lt;h2&gt;圣诞特效&lt;a href=&quot;#圣诞特效&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;主题内置可选的圣诞特效，在 &lt;code&gt;site-config.ts&lt;/code&gt; 中配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;export&lt;/span&gt;&lt;span&gt; const&lt;/span&gt;&lt;span&gt; christmasConfig&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  enabled: &lt;/span&gt;&lt;span&gt;false&lt;/span&gt;&lt;span&gt;,  &lt;/span&gt;&lt;span&gt;// 设为 true 启用&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  features: {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    snowfall: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt;,        &lt;/span&gt;&lt;span&gt;// 雪花飘落&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    christmasColorScheme: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt;,  &lt;/span&gt;&lt;span&gt;// 圣诞配色&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    christmasHat: &lt;/span&gt;&lt;span&gt;true&lt;/span&gt;&lt;span&gt;,    &lt;/span&gt;&lt;span&gt;// 圣诞帽&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  },&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;总结&lt;a href=&quot;#总结&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;通过修改以上配置，你可以轻松打造属于自己风格的博客。如有问题，欢迎在 GitHub 提 Issue。&lt;/p&gt;</content:encoded><category>category:笔记</category><category>category:前端</category><category>tag:定制</category><category>tag:CSS</category><category>tag:Tailwind</category></item><item><title>Markdown 增强功能演示</title><link>https://luoevanescence.github.io/post/markdown-features</link><guid isPermaLink="false">markdown-features</guid><description>展示 astro-koharu 支持的所有 Markdown 增强功能，包括代码高亮、Mermaid 图表、GFM 表格等。</description><pubDate>Tue, 02 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;本文展示 astro-koharu 支持的所有 Markdown 增强功能。&lt;/p&gt;
+&lt;h2&gt;链接嵌入功能&lt;a href=&quot;#链接嵌入功能&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;astro-koharu 支持自动嵌入独行链接，包括 Tweet 和通用链接预览。&lt;/p&gt;
+&lt;h3&gt;Tweet 嵌入测试&lt;a href=&quot;#tweet-嵌入测试&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;下面是一条独行的 Twitter 链接，应该自动转换为 Tweet 组件：&lt;/p&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;p&gt;这是普通段落中的链接 &lt;a href=&quot;https://twitter.com/vercel_dev/status/1997059920936775706&quot;&gt;Vercel Tweet&lt;/a&gt;，不应该被嵌入。&lt;/p&gt;
+&lt;p&gt;使用新域名 x.com 的 Tweet：&lt;/p&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;h3&gt;通用链接预览测试&lt;a href=&quot;#通用链接预览测试&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这是段落中的链接 &lt;a href=&quot;https://github.com/vercel/react-tweet&quot;&gt;react-tweet&lt;/a&gt;，不应该被嵌入。&lt;/p&gt;
+&lt;p&gt;下面是一个独行的普通链接，应该显示 OG 预览卡片：&lt;/p&gt;
+&lt;div&gt;
+  &lt;a href=&quot;https://github.com/vercel/react-tweet&quot; target=&quot;_blank&quot;&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;div&gt;
+          &lt;img src=&quot;https://github.com/fluidicon.png&quot; alt=&quot;&quot; loading=&quot;lazy&quot; /&gt;
+          &lt;span&gt;github.com&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;h3&gt;GitHub - vercel/react-tweet: Embed tweets in your React application.&lt;/h3&gt;
+        &lt;p&gt;Embed tweets in your React application. Contribute to vercel/react-tweet development by creating an account on GitHub.&lt;/p&gt;
+        &lt;div&gt;
+          &lt;span&gt;https://github.com/vercel/react-tweet&lt;/span&gt;
+           
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;&lt;img src=&quot;https://opengraph.githubassets.com/ea1acd43ea6d0ec750eeb8eef0f6eda245b183fc44e915772db81ddc1ed15a7f/vercel/react-tweet&quot; alt=&quot;GitHub - vercel/react-tweet: Embed tweets in your React application.&quot; loading=&quot;lazy&quot; /&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;这是没有 OG 图的链接&lt;/p&gt;
+&lt;div&gt;
+  &lt;a href=&quot;https://react-tweet.vercel.app/&quot; target=&quot;_blank&quot;&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;div&gt;
+          &lt;img src=&quot;https://react-tweet.vercel.app/#fff&quot; alt=&quot;&quot; loading=&quot;lazy&quot; /&gt;
+          &lt;span&gt;react-tweet.vercel.app&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;h3&gt;Introduction – react-tweet&lt;/h3&gt;
+        &lt;p&gt;Embed tweets in your React application.&lt;/p&gt;
+        &lt;div&gt;
+          &lt;span&gt;https://react-tweet.vercel.app/&lt;/span&gt;
+           
+        &lt;/div&gt;
+      &lt;/div&gt;
+      
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;这是获取不到 OG 信息的链接&lt;/p&gt;
+&lt;div&gt;
+  &lt;a href=&quot;https://zhuanlan.zhihu.com/p/1900483903984243480&quot; target=&quot;_blank&quot;&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;div&gt;
+          
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div&gt;https://zhuanlan.zhihu.com/p/1900483903984243480&lt;/div&gt;
+          &lt;div&gt;zhuanlan.zhihu.com&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+&lt;h3&gt;Codepen 链接嵌入&lt;a href=&quot;#codepen-链接嵌入&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;
+  &lt;span&gt;See the Pen &lt;a href=&quot;https://codepen.io/botteu/pen/YPKBrJX/&quot;&gt;YPKBrJX&lt;/a&gt; by botteu (&lt;a href=&quot;https://codepen.io/botteu&quot;&gt;@botteu&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/span&gt;
+&lt;/p&gt;
+&lt;h3&gt;链接嵌入规则&lt;a href=&quot;#链接嵌入规则&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;独行的 Twitter/X 链接自动转换为 Tweet 组件&lt;/li&gt;
+&lt;li&gt;独行的其他链接显示 OG 预览卡片&lt;/li&gt;
+&lt;li&gt;段落内的链接保持原样&lt;/li&gt;
+&lt;li&gt;支持深色/浅色主题切换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;代码高亮&lt;a href=&quot;#代码高亮&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;支持多种编程语言的语法高亮，并自动跟随主题切换。&lt;/p&gt;
+&lt;h3&gt;JavaScript&lt;a href=&quot;#javascript&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;function&lt;/span&gt;&lt;span&gt; greet&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;) {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  console.&lt;/span&gt;&lt;span&gt;log&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;`Hello, ${&lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span&gt;}!`&lt;/span&gt;&lt;span&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  return&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    message: &lt;/span&gt;&lt;span&gt;&quot;Welcome to astro-koharu&quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    timestamp: Date.&lt;/span&gt;&lt;span&gt;now&lt;/span&gt;&lt;span&gt;(),&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  };&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;greet&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;&quot;World&quot;&lt;/span&gt;&lt;span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;TypeScript&lt;a href=&quot;#typescript&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;interface&lt;/span&gt;&lt;span&gt; BlogPost&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; string&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  date&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; Date&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  tags&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; string&lt;/span&gt;&lt;span&gt;[];&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  content&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; string&lt;/span&gt;&lt;span&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;const&lt;/span&gt;&lt;span&gt; post&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt; BlogPost&lt;/span&gt;&lt;span&gt; =&lt;/span&gt;&lt;span&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title: &lt;/span&gt;&lt;span&gt;&quot;My First Post&quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  date: &lt;/span&gt;&lt;span&gt;new&lt;/span&gt;&lt;span&gt; Date&lt;/span&gt;&lt;span&gt;(),&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  tags: [&lt;/span&gt;&lt;span&gt;&quot;astro&quot;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;&quot;blog&quot;&lt;/span&gt;&lt;span&gt;],&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  content: &lt;/span&gt;&lt;span&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;};&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Python&lt;a href=&quot;#python&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;def&lt;/span&gt;&lt;span&gt; fibonacci&lt;/span&gt;&lt;span&gt;(n: &lt;/span&gt;&lt;span&gt;int&lt;/span&gt;&lt;span&gt;) -&amp;gt; list[&lt;/span&gt;&lt;span&gt;int&lt;/span&gt;&lt;span&gt;]:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    &quot;&quot;&quot;Generate Fibonacci sequence&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    if&lt;/span&gt;&lt;span&gt; n &lt;/span&gt;&lt;span&gt;&amp;lt;=&lt;/span&gt;&lt;span&gt; 0&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        return&lt;/span&gt;&lt;span&gt; []&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    elif&lt;/span&gt;&lt;span&gt; n &lt;/span&gt;&lt;span&gt;==&lt;/span&gt;&lt;span&gt; 1&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        return&lt;/span&gt;&lt;span&gt; [&lt;/span&gt;&lt;span&gt;0&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    fib &lt;/span&gt;&lt;span&gt;=&lt;/span&gt;&lt;span&gt; [&lt;/span&gt;&lt;span&gt;0&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    for&lt;/span&gt;&lt;span&gt; i &lt;/span&gt;&lt;span&gt;in&lt;/span&gt;&lt;span&gt; range&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;2&lt;/span&gt;&lt;span&gt;, n):&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;        fib.append(fib[i&lt;/span&gt;&lt;span&gt;-&lt;/span&gt;&lt;span&gt;1&lt;/span&gt;&lt;span&gt;] &lt;/span&gt;&lt;span&gt;+&lt;/span&gt;&lt;span&gt; fib[i&lt;/span&gt;&lt;span&gt;-&lt;/span&gt;&lt;span&gt;2&lt;/span&gt;&lt;span&gt;])&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;    return&lt;/span&gt;&lt;span&gt; fib&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;print&lt;/span&gt;&lt;span&gt;(fibonacci(&lt;/span&gt;&lt;span&gt;10&lt;/span&gt;&lt;span&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Bash&lt;a href=&quot;#bash&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;#!/bin/bash&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;# Start development server&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; install&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;pnpm&lt;/span&gt;&lt;span&gt; dev&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;echo&lt;/span&gt;&lt;span&gt; &quot;Server is running at http://localhost:4321&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;GFM 表格&lt;a href=&quot;#gfm-表格&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;功能&lt;/th&gt;&lt;th&gt;支持状态&lt;/th&gt;&lt;th&gt;说明&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;表格&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;td&gt;支持对齐&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;任务列表&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;td&gt;复选框&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;删除线&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;td&gt;删除文本&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;自动链接&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;td&gt;自动识别 URL&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2&gt;任务列表&lt;a href=&quot;#任务列表&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt; 安装 astro-koharu&lt;/li&gt;
+&lt;li&gt; 配置站点信息&lt;/li&gt;
+&lt;li&gt; 写第一篇文章&lt;/li&gt;
+&lt;li&gt; 部署到 Vercel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Mermaid 图表&lt;a href=&quot;#mermaid-图表&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;流程图&lt;a href=&quot;#流程图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;flowchart LR
+    A[编写文章] --&amp;gt; B[本地预览]
+    B --&amp;gt; C{满意吗?}
+    C --&amp;gt;|是| D[推送代码]
+    C --&amp;gt;|否| A
+    D --&amp;gt; E[自动部署]
+    E --&amp;gt; F[上线成功]&lt;/pre&gt;
+&lt;h3&gt;时序图&lt;a href=&quot;#时序图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;sequenceDiagram
+    participant U as 用户
+    participant B as 浏览器
+    participant S as 服务器
+
+    U-&amp;gt;&amp;gt;B: 访问博客
+    B-&amp;gt;&amp;gt;S: 请求页面
+    S--&amp;gt;&amp;gt;B: 返回 HTML
+    B--&amp;gt;&amp;gt;U: 渲染页面&lt;/pre&gt;
+&lt;h3&gt;饼图&lt;a href=&quot;#饼图&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;pie title 博客内容分布
+    &quot;技术笔记&quot; : 45
+    &quot;生活随笔&quot; : 25
+    &quot;项目分享&quot; : 20
+    &quot;其他&quot; : 10&lt;/pre&gt;
+&lt;h2&gt;文本样式&lt;a href=&quot;#文本样式&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;粗体文本&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;斜体文本&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;删除线&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;行内代码&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cosZone/astro-koharu&quot;&gt;链接文本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;引用&lt;a href=&quot;#引用&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这是一段引用文本。&lt;/p&gt;
+&lt;p&gt;astro-koharu 让博客搭建变得简单而优雅。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;标题层级&lt;a href=&quot;#标题层级&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;本文展示了 h2-h6 各级标题，它们都会自动生成锚点链接，方便分享和引用。&lt;/p&gt;
+&lt;h3&gt;三级标题&lt;a href=&quot;#三级标题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4&gt;四级标题&lt;a href=&quot;#四级标题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h5&gt;五级标题&lt;a href=&quot;#五级标题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h6&gt;六级标题&lt;a href=&quot;#六级标题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h6&gt;
+&lt;h2&gt;分割线&lt;a href=&quot;#分割线&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;hr /&gt;
+&lt;h2&gt;列表&lt;a href=&quot;#列表&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;无序列表&lt;a href=&quot;#无序列表&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;项目一
+&lt;ul&gt;
+&lt;li&gt;子项目 A&lt;/li&gt;
+&lt;li&gt;子项目 B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;项目二&lt;/li&gt;
+&lt;li&gt;项目三&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;有序列表&lt;a href=&quot;#有序列表&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;第一步&lt;/li&gt;
+&lt;li&gt;第二步
+&lt;ol&gt;
+&lt;li&gt;子步骤 A&lt;/li&gt;
+&lt;li&gt;子步骤 B
+&lt;ol&gt;
+&lt;li&gt;子步骤 C&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;第三步&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;图片&lt;a href=&quot;#图片&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;图片会自动应用 LQIP（低质量图片占位符）效果：&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;/img/cover/3.webp&quot; alt=&quot;示例图片&quot; loading=&quot;lazy&quot; /&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;总结&lt;a href=&quot;#总结&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;以上展示了 astro-koharu 支持的主要 Markdown 功能。更多功能请参考 &lt;a href=&quot;/post/astro-koharu-guide&quot;&gt;使用指南&lt;/a&gt;。&lt;/p&gt;</content:encoded><category>category:笔记</category><category>tag:Markdown</category><category>tag:教程</category></item><item><title>欢迎使用 astro-koharu</title><link>https://luoevanescence.github.io/post/getting-started</link><guid isPermaLink="false">getting-started</guid><description>欢迎使用 astro-koharu 博客主题！这是一个基于 Astro 的现代化博客系统，拥有优雅的界面和丰富的功能。</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;欢迎使用 astro-koharu 博客主题！&lt;/p&gt;
+&lt;h2&gt;关于这个主题&lt;a href=&quot;#关于这个主题&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;astro-koharu 是一个基于 Astro 5.x 构建的现代化博客系统，设计灵感来自 Hexo 的 Shoka 主题。它具有以下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;性能优异&lt;/strong&gt; - 基于 Astro 静态站点生成，加载速度快&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优雅设计&lt;/strong&gt; - 萌系/二次元风格，粉蓝配色&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能丰富&lt;/strong&gt; - 多级分类、标签、目录、搜索等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;响应式&lt;/strong&gt; - 完美适配桌面和移动设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;快速开始&lt;a href=&quot;#快速开始&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;1. 配置你的博客&lt;a href=&quot;#1-配置你的博客&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;编辑 &lt;code&gt;config/site.yaml&lt;/code&gt; 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;site&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;你的博客名称&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  author&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;你的名字&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  description&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;你的博客简介&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  # ...更多配置&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;2. 写第一篇文章&lt;a href=&quot;#2-写第一篇文章&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;src/content/blog/&lt;/code&gt; 目录下创建 Markdown 文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;title&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;我的第一篇文章&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;date&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;2024-01-01&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;tags&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;标签1&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;categories&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;  - &lt;/span&gt;&lt;span&gt;分类名&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;/span&gt;
+&lt;span&gt;&lt;span&gt;文章内容...&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;3. 部署上线&lt;a href=&quot;#3-部署上线&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;推荐使用 Vercel 一键部署：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://vercel.com/new/clone?repository-url=https://github.com/cosZone/astro-koharu&quot;&gt;&lt;img src=&quot;https://vercel.com/button&quot; alt=&quot;Deploy with Vercel&quot; loading=&quot;lazy&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;了解更多&lt;a href=&quot;#了解更多&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;查看 &lt;a href=&quot;/post/markdown-features&quot;&gt;Markdown 功能演示&lt;/a&gt; 了解所有 Markdown 增强功能&lt;/li&gt;
+&lt;li&gt;查看 &lt;a href=&quot;/post/astro-koharu-guide&quot;&gt;使用指南&lt;/a&gt; 了解详细配置说明&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;祝你使用愉快！&lt;/p&gt;</content:encoded><category>category:工具</category><category>tag:入门</category><category>tag:Astro</category></item></channel></rss>
