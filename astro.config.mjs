@@ -66,6 +66,7 @@ function conditionalSnowfall() {
 // https://astro.build/config
 export default defineConfig({
   site: yamlConfig.site.url,
+  base: '/astro-koharu/',
   compressHTML: true,
   markdown: {
     // Enable GitHub Flavored Markdown
